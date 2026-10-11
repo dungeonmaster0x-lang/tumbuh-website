@@ -1,0 +1,40 @@
+# Refreshes assets/js/market-data.js with the latest closing prices.
+# Runs on GitHub's computers, so you don't need to run the script yourself.
+#
+# Run it by hand: GitHub → Actions → "Update prices" → Run workflow.
+# To run it automatically every weekday after the market closes, remove the
+# "#" in front of the two "schedule" lines below.
+
+name: Update prices
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "30 10 * * 1-5"   # 17:30 WIB (10:30 UTC), Monday–Friday
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install yfinance
+        run: pip install -r tools/requirements.txt
+
+      - name: Download prices
+        run: python tools/update_prices.py
+
+      - name: Save the new prices
+        run: |
+          git config user.name "price-bot"
+          git config user.email "price-bot@users.noreply.github.com"
+          git add assets/js/market-data.js
+          git diff --cached --quiet || git commit -m "Update prices"
+          git push
