@@ -1,4 +1,4 @@
-# Tumbuh — belajar saham untuk pemula
+# Tumbuh — belajar saham untuk pemula 🌱
 
 A bilingual (Bahasa Indonesia / English) learning website for first-time stock investors in Indonesia.
 It uses plain HTML, CSS and JavaScript with no frameworks and no build step, so every file can be read and edited directly.
