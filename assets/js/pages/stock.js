@@ -131,10 +131,11 @@
         </div>
         <p style="max-width:640px;color:var(--ink-2)">${t(s.change >= 0 ? "priceUp" : "priceDown", { pct: T.pct(Math.abs(s.change), 2, false) })} ${t(big ? "moveBig" : "moveSmall")}</p>
       </div>
-      <div style="display:flex;gap:10px">
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
         <button type="button" class="btn ${isWatched ? "btn--dark" : "btn--primary"}" id="watch-btn" aria-pressed="${isWatched}">
           ${T.icon("star", 18, isWatched ? 'fill="currentColor"' : "")}${t(isWatched ? "watching" : "watch")}
         </button>
+        <a class="btn btn--ghost" href="bandingkan.html?a=${s.code}&b=${(similar[0] || T.allStocks().find((x) => x.code !== s.code)).code}">${t("compareWith")}</a>
         <button type="button" class="btn btn--ghost" id="share-btn" style="width:48px;padding:0" aria-label="${t("share")}" title="${t("share")}">${T.icon("link", 20)}</button>
       </div>
     </section>

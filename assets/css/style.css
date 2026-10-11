@@ -295,7 +295,7 @@ button { cursor: pointer; }
 .lesson-fig .fig-label line { stroke: var(--muted-2); stroke-dasharray: 3 3; }
 .lesson-fig .fig-label text { font-size: 16px; font-weight: 600; fill: var(--ink-2); }
 .lesson-fig figcaption { margin-top: 12px; font-size: 15px; color: var(--muted); }
-.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+.table-wrap { max-width: 100%; overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
 .lesson table { width: 100%; border-collapse: collapse; font-size: 16px; }
 .lesson td { padding: 12px 18px; border-bottom: 1px solid var(--tint); color: var(--ink-2); }
 .lesson td.num { text-align: right; white-space: nowrap; font-weight: 600; }
@@ -318,6 +318,31 @@ button { cursor: pointer; }
 .summary-strip .fact { flex: 1 1 160px; }
 .summary-strip .fact span:last-child { font-size: 24px; font-weight: 800; }
 @media (max-width: 560px) { .spark { display: none; } }
+
+/* compare page */
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+.cmp-pickers { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px; padding: 20px; }
+.cmp-pick { flex: 1 1 260px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700; color: var(--ink-2); }
+.cmp-pick select { height: 48px; border-radius: 12px; border: 1px solid var(--line-strong); padding: 0 12px; background: var(--surface); font-size: 15px; font-weight: 600; }
+#swap { width: 48px; padding: 0; font-size: 20px; }
+.cmp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.cmp-head { gap: 14px; }
+.cmp-outcomes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cmp-outcomes .fact span:nth-child(2) { font-size: 24px; font-weight: 800; }
+.cmp-table { display: flex; flex-direction: column; }
+.cmp-row { display: grid; grid-template-columns: minmax(150px, 1.1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); gap: 4px 16px; align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--tint); }
+.cmp-row--head { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-2); padding-top: 4px; }
+.cmp-label { font-size: 14px; font-weight: 700; color: #3B4452; }
+.cmp-val { font-size: 16px; font-weight: 700; }
+.cmp-note { font-size: 13px; color: var(--muted); }
+.cmp-q { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-left: 4px; border-radius: 50%; border: 1px solid var(--line-strong); font-size: 12px; text-decoration: none; color: #3B4452; }
+@media (max-width: 760px) {
+  .cmp-grid, .cmp-outcomes { grid-template-columns: 1fr; }
+  .cmp-row { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .cmp-row--head span:first-child { display: block; }
+  .cmp-note { grid-column: 1 / -1; }
+  #swap { flex: 0 0 48px; }
+}
 
 .lesson-nav .btn { white-space: normal; height: auto; min-height: 48px; padding: 12px 18px; text-align: center; }
 .quiz { display: flex; flex-direction: column; gap: 12px; }
@@ -375,6 +400,8 @@ button { cursor: pointer; }
   .chart svg { height: 200px; }
   .sector-row__name { width: 96px; }
   .lesson p, .lesson li { font-size: 17px; }
+  .lesson td { padding: 10px 12px; font-size: 15px; }
+  .lesson td.num { white-space: normal; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }

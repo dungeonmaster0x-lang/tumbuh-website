@@ -25,6 +25,7 @@ tumbuh-website/
 ├── kamus.html          Glossary with search (link to a term: kamus.html#dividen)
 ├── penyaring.html      Simple screener — penyaring.html?pilih=dividend,big
 ├── pantau.html         Watchlist: the stocks you starred (saved in your browser)
+├── bandingkan.html     Compare two stocks — bandingkan.html?a=BBCA&b=BBRI
 ├── assets/
 │   ├── css/style.css   All styling. Colours and sizes are at the top (":root")
 │   ├── img/favicon.svg Logo / browser tab icon

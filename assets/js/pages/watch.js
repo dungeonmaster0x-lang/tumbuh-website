@@ -83,7 +83,10 @@
             </div>`;
           }).join("")}
         </div>
-        <a class="link-arrow" href="penyaring.html" style="align-self:flex-start;padding:8px 12px">${t("addMore")}</a>
+        <div style="display:flex;flex-wrap:wrap;gap:4px 20px">
+          <a class="link-arrow" href="penyaring.html" style="padding:8px 12px">${t("addMore")}</a>
+          ${list.length >= 2 ? `<a class="link-arrow" href="bandingkan.html?a=${list[0].code}&b=${list[1].code}" style="padding:8px 12px">${t("cmpTitle")}</a>` : ""}
+        </div>
       </section>
 
       <div class="note-dashed">${T.icon("info", 20)}<span>${t("watchTip")}</span></div>`;

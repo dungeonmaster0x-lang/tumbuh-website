@@ -252,6 +252,7 @@
           <a href="kamus.html" data-i18n="navGlossary"></a>
           <a href="penyaring.html" data-i18n="navScreener"></a>
           <a href="pantau.html" data-i18n="navWatch"></a>
+          <a href="bandingkan.html" data-i18n="navCompare"></a>
         </nav>
       </div>
     </footer>`;

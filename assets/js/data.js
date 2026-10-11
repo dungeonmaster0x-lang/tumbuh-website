@@ -346,6 +346,79 @@ TUMBUH.lessons = [
     }
   },
   {
+    slug: "dividen-aksi-korporasi", mins: 9,
+    title: { id: "Dividen dan aksi korporasi", en: "Dividends and corporate actions" },
+    desc:  { id: "Tanggal penting dividen, stock split, rights issue, dan buyback — apa artinya bagi Anda.", en: "Key dividend dates, stock splits, rights issues and buybacks — what they mean for you." },
+    body: {
+      id: `
+<p><strong>Aksi korporasi</strong> adalah keputusan perusahaan yang memengaruhi saham dan pemegang sahamnya. Empat yang paling sering Anda temui: dividen, stock split, rights issue, dan buyback.</p>
+<h2>1. Dividen dan tanggal-tanggalnya</h2>
+<p>Untuk mendapat dividen, Anda harus memiliki saham pada waktu yang tepat. Ada empat tanggal yang perlu dipahami:</p>
+<ul>
+<li><strong>Cum date:</strong> hari terakhir membeli saham agar masih berhak atas dividen.</li>
+<li><strong>Ex date:</strong> hari bursa setelah cum date. Membeli pada hari ini atau sesudahnya <em>tidak</em> mendapat dividen.</li>
+<li><strong>Recording date:</strong> tanggal pencatatan daftar pemegang saham yang berhak.</li>
+<li><strong>Payment date:</strong> tanggal dividen masuk ke rekening dana (RDN) Anda.</li>
+</ul>
+<div class="callout"><strong>Jebakan yang sering terjadi</strong><p>Pada ex date, harga saham biasanya turun kira-kira sebesar dividennya, karena uang itu akan keluar dari perusahaan. Membeli tepat sebelum cum date hanya demi dividen sering tidak menguntungkan — apalagi setelah dipotong pajak dan biaya transaksi.</p></div>
+<h2>2. Stock split: memecah saham</h2>
+<p>Perusahaan memecah satu saham menjadi beberapa saham dengan harga lebih rendah. <strong>Nilai investasi Anda tidak berubah.</strong></p>
+<div class="table-wrap"><table><tbody>
+<tr><td>Sebelum split 1:5</td><td class="num">100 lembar × Rp10.000 = Rp1.000.000</td></tr>
+<tr class="total"><td>Sesudah split 1:5</td><td class="num">500 lembar × Rp2.000 = Rp1.000.000</td></tr>
+</tbody></table></div>
+<p>Tujuannya biasanya agar harga per lot lebih terjangkau dan saham lebih ramai diperdagangkan. Kebalikannya, <strong>reverse stock split</strong>, menggabungkan beberapa saham menjadi satu dengan harga lebih tinggi.</p>
+<h2>3. Rights issue (HMETD)</h2>
+<p>Perusahaan menerbitkan saham baru untuk mencari modal, dan pemegang saham lama mendapat <strong>hak memesan efek terlebih dahulu (HMETD)</strong> — hak membeli saham baru itu dengan harga tertentu.</p>
+<ul>
+<li><strong>Jika Anda menebus haknya,</strong> Anda membayar uang tambahan dan porsi kepemilikan Anda tetap.</li>
+<li><strong>Jika tidak,</strong> porsi kepemilikan Anda mengecil (terdilusi) karena jumlah saham perusahaan bertambah. Hak tersebut biasanya bisa dijual di bursa selama periode perdagangan HMETD.</li>
+</ul>
+<p>Rights issue bisa positif (modal untuk ekspansi) atau negatif (perusahaan butuh uang untuk menutup masalah). Baca alasannya di prospektus.</p>
+<h2>4. Buyback: membeli kembali saham</h2>
+<p>Perusahaan membeli sahamnya sendiri dari pasar. Jumlah saham beredar berkurang, sehingga laba per saham bisa naik. Buyback sering dibaca sebagai tanda manajemen menganggap harga sahamnya terlalu murah — tetapi tetap bukan jaminan harga naik.</p>
+<div class="callout"><strong>Di mana melihat jadwalnya?</strong><p>Pengumuman aksi korporasi dipublikasikan di keterbukaan informasi situs BEI (idx.co.id) dan biasanya juga muncul di aplikasi sekuritas Anda.</p></div>`,
+      en: `
+<p>A <strong>corporate action</strong> is a company decision that affects its shares and shareholders. The four you'll meet most often are dividends, stock splits, rights issues and buybacks.</p>
+<h2>1. Dividends and their dates</h2>
+<p>To receive a dividend, you need to own the shares at the right time. There are four dates to understand:</p>
+<ul>
+<li><strong>Cum date:</strong> the last day you can buy and still be entitled to the dividend.</li>
+<li><strong>Ex date:</strong> the trading day after the cum date. Buying on or after this day does <em>not</em> get the dividend.</li>
+<li><strong>Recording date:</strong> when the list of entitled shareholders is recorded.</li>
+<li><strong>Payment date:</strong> when the dividend arrives in your investor fund account (RDN).</li>
+</ul>
+<div class="callout"><strong>A common trap</strong><p>On the ex date the share price usually drops by roughly the dividend, because that cash is leaving the company. Buying just before the cum date only for the dividend often doesn't pay off — especially after tax and trading fees.</p></div>
+<h2>2. Stock split: dividing shares</h2>
+<p>The company splits each share into several cheaper ones. <strong>The value of your investment doesn't change.</strong></p>
+<div class="table-wrap"><table><tbody>
+<tr><td>Before a 1:5 split</td><td class="num">100 shares × IDR 10,000 = IDR 1,000,000</td></tr>
+<tr class="total"><td>After a 1:5 split</td><td class="num">500 shares × IDR 2,000 = IDR 1,000,000</td></tr>
+</tbody></table></div>
+<p>The aim is usually to make a lot more affordable and the stock more actively traded. The opposite, a <strong>reverse stock split</strong>, merges several shares into one at a higher price.</p>
+<h2>3. Rights issue (HMETD)</h2>
+<p>The company issues new shares to raise money, and existing shareholders get a <strong>pre-emptive right (HMETD)</strong> to buy those new shares at a set price.</p>
+<ul>
+<li><strong>If you exercise the right,</strong> you pay extra money and keep your share of ownership.</li>
+<li><strong>If you don't,</strong> your share of ownership shrinks (dilution) because the company now has more shares. The rights can usually be sold on the exchange during their trading period.</li>
+</ul>
+<p>A rights issue can be positive (money to expand) or negative (the company needs cash to fix a problem). Read the reason in the prospectus.</p>
+<h2>4. Buyback: buying shares back</h2>
+<p>The company buys its own shares from the market. Fewer shares are outstanding, so earnings per share can rise. A buyback is often read as management thinking the shares are cheap — but it still doesn't guarantee the price will go up.</p>
+<div class="callout"><strong>Where to find the schedule</strong><p>Corporate action announcements are published in the disclosure section of the IDX website (idx.co.id) and usually show up in your broker's app too.</p></div>`
+    },
+    quiz: {
+      q: { id: "Anda punya 100 lembar saham seharga Rp6.000. Terjadi stock split 1:2. Apa yang Anda miliki sekarang?", en: "You own 100 shares priced at IDR 6,000. There's a 1:2 stock split. What do you own now?" },
+      options: [
+        { id: "100 lembar × Rp3.000", en: "100 shares × IDR 3,000" },
+        { id: "200 lembar × Rp3.000", en: "200 shares × IDR 3,000" },
+        { id: "200 lembar × Rp6.000", en: "200 shares × IDR 6,000" }
+      ],
+      answer: 1,
+      explain: { id: "Jumlah saham menjadi 2 kali lipat dan harganya menjadi setengah. Nilai total tetap Rp600.000.", en: "You get twice as many shares at half the price. The total value stays IDR 600,000." }
+    }
+  },
+  {
     slug: "risiko-diversifikasi", mins: 8,
     title: { id: "Risiko & diversifikasi", en: "Risk & diversification" },
     desc:  { id: "Kenapa sebaiknya tidak menaruh semua uang di satu saham.", en: "Why it pays not to put all your money in one stock." },
@@ -386,6 +459,126 @@ TUMBUH.lessons = [
       ],
       answer: 1,
       explain: { id: "Diversifikasi tidak menjamin untung, tetapi membatasi kerugian dari satu saham.", en: "Diversification doesn't guarantee profit, but it limits the damage from any single stock." }
+    }
+  },
+  {
+    slug: "kesalahan-pemula", mins: 7,
+    title: { id: "Kesalahan umum investor pemula", en: "Common beginner mistakes" },
+    desc:  { id: "Tujuh kebiasaan yang paling sering membuat pemula rugi — dan cara menghindarinya.", en: "Seven habits that most often cost beginners money — and how to avoid them." },
+    body: {
+      id: `
+<p>Hampir semua investor pernah melakukan kesalahan berikut. Mengenalinya sejak awal bisa menghemat banyak uang dan stres.</p>
+<h2>1. Membeli karena "kata orang"</h2>
+<p>Rekomendasi di grup chat atau media sosial sering tanpa alasan yang jelas, dan kadang sengaja dibuat untuk menaikkan harga sebelum dijual oleh pembuatnya. Saham yang harganya "digoreng" seperti ini bisa jatuh sangat cepat.</p>
+<p><strong>Gantinya:</strong> pahami dulu bisnis perusahaannya. Jika Anda tidak bisa menjelaskan cara perusahaan menghasilkan uang, jangan beli.</p>
+<h2>2. Menaruh semua uang di satu saham</h2>
+<p>Satu kabar buruk bisa menghapus sebagian besar modal Anda. <strong>Gantinya:</strong> sebar ke beberapa saham dari sektor berbeda.</p>
+<h2>3. Memakai uang yang akan segera dibutuhkan — atau uang pinjaman</h2>
+<p>Jika uang sekolah, cicilan, atau dana darurat ada di saham, Anda bisa terpaksa menjual saat harga sedang turun. Berinvestasi dengan uang pinjaman membuat kerugian berlipat. <strong>Gantinya:</strong> hanya gunakan uang yang tidak Anda butuhkan dalam beberapa tahun.</p>
+<h2>4. Panik saat harga turun, serakah saat harga naik</h2>
+<p>Menjual karena takut saat semua orang menjual, lalu membeli karena takut ketinggalan (FOMO) saat harga sudah tinggi, adalah cara cepat untuk "beli mahal, jual murah". <strong>Gantinya:</strong> tulis alasan Anda membeli. Jual hanya jika alasan itu berubah, bukan karena harga bergerak.</p>
+<h2>5. Terlalu sering jual beli</h2>
+<p>Setiap transaksi kena biaya broker dan pajak. Jual beli setiap hari menggerus hasil, dan sebagian besar pemula yang mencobanya justru rugi. <strong>Gantinya:</strong> mulai dengan pola pikir jangka panjang.</p>
+<h2>6. Terus menambah saham yang jatuh tanpa berpikir</h2>
+<p>Membeli lagi saat harga turun ("average down") hanya masuk akal jika bisnisnya masih bagus. Jika harga turun karena masalah serius, Anda hanya menambah kerugian. <strong>Gantinya:</strong> cari tahu dulu kenapa harganya turun.</p>
+<h2>7. Mengecek harga setiap menit</h2>
+<p>Gerakan harian kebanyakan hanya "kebisingan". Terlalu sering melihat harga memicu keputusan emosional. <strong>Gantinya:</strong> cek secara berkala, misalnya seminggu sekali, dan fokus pada laporan keuangan setiap kuartal.</p>
+<div class="callout"><strong>Satu kebiasaan baik</strong><p>Buat catatan investasi: saham apa, harga berapa, kenapa membeli, dan kapan akan dievaluasi. Catatan ini membantu Anda belajar dari keputusan sendiri.</p></div>`,
+      en: `
+<p>Almost every investor has made these mistakes. Recognising them early can save a lot of money and stress.</p>
+<h2>1. Buying because "someone said so"</h2>
+<p>Tips in chat groups or on social media often come without a clear reason, and are sometimes posted on purpose to push a price up before the poster sells. Stocks "pumped" like this can collapse very quickly.</p>
+<p><strong>Instead:</strong> understand the business first. If you can't explain how the company makes money, don't buy it.</p>
+<h2>2. Putting all your money in one stock</h2>
+<p>One piece of bad news can wipe out most of your capital. <strong>Instead:</strong> spread it across several stocks in different sectors.</p>
+<h2>3. Using money you'll soon need — or borrowed money</h2>
+<p>If school fees, loan payments or your emergency fund are in stocks, you may be forced to sell while prices are down. Investing with borrowed money multiplies losses. <strong>Instead:</strong> only use money you won't need for several years.</p>
+<h2>4. Panicking when prices fall, getting greedy when they rise</h2>
+<p>Selling out of fear when everyone sells, then buying out of fear of missing out (FOMO) after prices are already high, is a fast way to "buy high, sell low". <strong>Instead:</strong> write down why you bought. Sell only if that reason changes, not because the price moved.</p>
+<h2>5. Trading too often</h2>
+<p>Every trade costs broker fees and tax. Buying and selling every day eats into returns, and most beginners who try it lose money. <strong>Instead:</strong> start with a long-term mindset.</p>
+<h2>6. Blindly buying more of a falling stock</h2>
+<p>Buying more as the price falls ("averaging down") only makes sense if the business is still sound. If the price fell because of a serious problem, you're just adding to your loss. <strong>Instead:</strong> find out why the price dropped first.</p>
+<h2>7. Checking the price every minute</h2>
+<p>Daily moves are mostly noise. Watching prices too closely triggers emotional decisions. <strong>Instead:</strong> check in regularly, say once a week, and focus on the quarterly financial reports.</p>
+<div class="callout"><strong>One good habit</strong><p>Keep an investing journal: which stock, at what price, why you bought it, and when you'll review it. It helps you learn from your own decisions.</p></div>`
+    },
+    quiz: {
+      q: { id: "Harga saham yang Anda miliki turun 15% dalam seminggu. Apa langkah pertama yang paling masuk akal?", en: "A stock you own fell 15% in a week. What's the most sensible first step?" },
+      options: [
+        { id: "Langsung jual semuanya sebelum turun lagi", en: "Sell everything right away before it falls further" },
+        { id: "Langsung beli lebih banyak karena sudah murah", en: "Buy more immediately because it's cheaper" },
+        { id: "Cari tahu penyebabnya dan cek apakah alasan Anda membeli masih berlaku", en: "Find out why, and check whether your reason for buying still holds" }
+      ],
+      answer: 2,
+      explain: { id: "Keputusan sebaiknya didasarkan pada alasan, bukan emosi. Cari tahu dulu kenapa harganya turun.", en: "Decisions should be based on reasons, not emotion. Find out why the price fell first." }
+    }
+  },
+  {
+    slug: "memilih-sekuritas", mins: 7,
+    title: { id: "Cara memilih perusahaan sekuritas", en: "How to choose a broker" },
+    desc:  { id: "Cek izin, biaya, keamanan, dan cara memastikan saham Anda benar-benar tercatat.", en: "Check licences, fees, security, and how to confirm your shares are really recorded." },
+    body: {
+      id: `
+<p>Perusahaan sekuritas (broker) adalah pintu Anda ke bursa. Memilih yang tepat sama pentingnya dengan memilih saham.</p>
+<h2>1. Pastikan resmi dan diawasi</h2>
+<ul>
+<li>Sekuritas harus <strong>berizin dan diawasi OJK</strong> serta menjadi <strong>Anggota Bursa</strong> BEI. Daftar anggota bursa bisa dicek di situs idx.co.id.</li>
+<li>Waspadai tawaran yang menjanjikan keuntungan pasti atau sangat tinggi. Itu ciri khas investasi bodong.</li>
+<li>Unduh aplikasi hanya dari toko aplikasi resmi, dan pastikan nama penerbitnya sesuai nama perusahaan sekuritas.</li>
+</ul>
+<h2>2. Uang Anda di RDN atas nama Anda</h2>
+<p>Dana investasi disimpan di <strong>Rekening Dana Nasabah (RDN)</strong> di bank, atas nama Anda sendiri — bukan di rekening perusahaan sekuritas. Jangan pernah mentransfer uang untuk membeli saham ke rekening pribadi siapa pun.</p>
+<h2>3. Bandingkan biaya</h2>
+<ul>
+<li>Setiap transaksi beli dan jual dikenai <strong>biaya broker</strong> (komisi), dalam persen dari nilai transaksi. Besarnya berbeda antar sekuritas.</li>
+<li>Penjualan saham juga dikenai <strong>pajak final 0,1%</strong> dari nilai penjualan.</li>
+<li>Cek apakah ada biaya lain: setoran minimum, biaya bulanan, atau biaya tarik dana.</li>
+</ul>
+<h2>4. Aplikasi, keamanan, dan layanan</h2>
+<ul>
+<li>Aplikasi mudah dipakai, stabil saat pasar ramai, dan menyediakan informasi dasar seperti laporan keuangan.</li>
+<li>Ada <strong>verifikasi dua langkah</strong> (PIN, OTP, atau sidik jari).</li>
+<li>Layanan pelanggan mudah dihubungi dan responsif.</li>
+</ul>
+<h2>5. Cek sendiri kepemilikan saham Anda</h2>
+<p>Saham Anda dicatat oleh <strong>KSEI</strong> (Kustodian Sentral Efek Indonesia), bukan hanya oleh broker. Setelah membuka rekening, Anda bisa mendaftar <strong>AKSes KSEI</strong> untuk melihat sendiri saham dan dana Anda secara langsung dari sumber resmi.</p>
+<div class="callout"><strong>Daftar cek singkat</strong><p>Berizin OJK ✓ · Anggota Bursa BEI ✓ · RDN atas nama sendiri ✓ · Biaya jelas ✓ · Verifikasi dua langkah ✓ · Bisa dicek di AKSes KSEI ✓</p></div>`,
+      en: `
+<p>A brokerage is your doorway to the exchange. Choosing the right one matters as much as choosing stocks.</p>
+<h2>1. Make sure it's official and supervised</h2>
+<ul>
+<li>The broker must be <strong>licensed and supervised by OJK</strong> and be an <strong>Exchange Member</strong> of the IDX. You can check the member list on idx.co.id.</li>
+<li>Be wary of offers promising guaranteed or very high returns — a classic sign of an investment scam.</li>
+<li>Only download apps from official app stores, and check the publisher's name matches the brokerage.</li>
+</ul>
+<h2>2. Your money sits in an RDN in your own name</h2>
+<p>Investing money is held in an <strong>investor fund account (RDN)</strong> at a bank, in your own name — not in the broker's account. Never transfer money for buying shares into anyone's personal account.</p>
+<h2>3. Compare fees</h2>
+<ul>
+<li>Every buy and sell carries a <strong>broker fee</strong> (commission), as a percentage of the trade value. It varies between brokers.</li>
+<li>Selling shares also incurs a <strong>0.1% final tax</strong> on the sale value.</li>
+<li>Check for other costs: minimum deposits, monthly fees or withdrawal fees.</li>
+</ul>
+<h2>4. App, security and service</h2>
+<ul>
+<li>An app that's easy to use, stays stable when the market is busy, and offers basic information like financial reports.</li>
+<li><strong>Two-step verification</strong> (PIN, OTP or fingerprint).</li>
+<li>Customer service that's easy to reach and responsive.</li>
+</ul>
+<h2>5. Check your holdings yourself</h2>
+<p>Your shares are recorded by <strong>KSEI</strong> (the Indonesian Central Securities Depository), not just by your broker. After opening an account you can register for <strong>AKSes KSEI</strong> to see your shares and funds directly from the official source.</p>
+<div class="callout"><strong>Quick checklist</strong><p>OJK-licensed ✓ · IDX Exchange Member ✓ · RDN in your own name ✓ · Clear fees ✓ · Two-step verification ✓ · Visible in AKSes KSEI ✓</p></div>`
+    },
+    quiz: {
+      q: { id: "Seseorang meminta Anda mentransfer uang ke rekening pribadinya untuk \"dibelikan saham\". Apa yang sebaiknya Anda lakukan?", en: "Someone asks you to transfer money to their personal account so they can \"buy shares for you\". What should you do?" },
+      options: [
+        { id: "Transfer jika ia terlihat berpengalaman", en: "Transfer if they seem experienced" },
+        { id: "Tolak — dana investasi selalu masuk ke RDN atas nama Anda sendiri", en: "Refuse — investing money always goes into an RDN in your own name" },
+        { id: "Transfer sebagian dulu untuk mencoba", en: "Transfer part of it first as a test" }
+      ],
+      answer: 1,
+      explain: { id: "Sekuritas resmi tidak pernah meminta transfer ke rekening pribadi. Dana Anda selalu masuk ke RDN atas nama Anda.", en: "Licensed brokers never ask for transfers to personal accounts. Your money always goes into an RDN in your own name." }
     }
   },
   {
@@ -499,8 +692,31 @@ TUMBUH.glossary = [
     def: { id: "Uang tunai yang benar-benar masuk dan keluar dari perusahaan.", en: "The cash that actually comes into and goes out of a company." } },
   { id: "der", term: { id: "DER", en: "DER (debt-to-equity)" },
     def: { id: "Debt to Equity Ratio: liabilitas dibagi ekuitas. Menunjukkan seberapa besar perusahaan bergantung pada utang.", en: "Debt to equity ratio: liabilities divided by equity. Shows how much a company relies on debt." },
-    ex: { id: "Liabilitas Rp800 miliar, ekuitas Rp1.200 miliar → DER 0,67x.", en: "IDR 800 bn liabilities, IDR 1,200 bn equity → DER 0.67x." } }
+    ex: { id: "Liabilitas Rp800 miliar, ekuitas Rp1.200 miliar → DER 0,67x.", en: "IDR 800 bn liabilities, IDR 1,200 bn equity → DER 0.67x." } },
+  { id: "cum-date", term: { id: "Cum date", en: "Cum date" },
+    def: { id: "Hari terakhir membeli saham agar masih berhak mendapat dividen atau hak aksi korporasi lainnya.", en: "The last day to buy a stock and still be entitled to a dividend or other corporate action." } },
+  { id: "ex-date", term: { id: "Ex date", en: "Ex date" },
+    def: { id: "Hari bursa setelah cum date. Pembeli pada hari ini tidak lagi berhak atas dividen. Harga biasanya turun kira-kira sebesar dividennya.", en: "The trading day after the cum date. Buyers from this day are no longer entitled to the dividend. The price usually drops by about the dividend." } },
+  { id: "stock-split", term: { id: "Stock split", en: "Stock split" },
+    def: { id: "Pemecahan saham menjadi lebih banyak lembar dengan harga lebih rendah. Nilai total kepemilikan tidak berubah.", en: "Splitting shares into more units at a lower price. The total value of your holding doesn't change." },
+    ex: { id: "Split 1:5: 100 lembar × Rp10.000 menjadi 500 lembar × Rp2.000.", en: "1:5 split: 100 shares × IDR 10,000 become 500 shares × IDR 2,000." } },
+  { id: "rights-issue", term: { id: "Rights issue (HMETD)", en: "Rights issue" },
+    def: { id: "Penerbitan saham baru di mana pemegang saham lama mendapat hak membeli lebih dulu dengan harga tertentu.", en: "An issue of new shares where existing shareholders get the first right to buy at a set price." } },
+  { id: "dilusi", term: { id: "Dilusi", en: "Dilution" },
+    def: { id: "Mengecilnya porsi kepemilikan Anda karena perusahaan menerbitkan saham baru.", en: "Your ownership share getting smaller because the company issues new shares." } },
+  { id: "buyback", term: { id: "Buyback", en: "Buyback" },
+    def: { id: "Perusahaan membeli kembali sahamnya sendiri dari pasar, sehingga jumlah saham beredar berkurang.", en: "A company buying its own shares back from the market, reducing the number of shares outstanding." } },
+  { id: "saham-gorengan", term: { id: "Saham gorengan", en: "Pumped stock (\"saham gorengan\")" },
+    def: { id: "Istilah untuk saham yang harganya dinaikkan secara tidak wajar oleh pihak tertentu, lalu biasanya jatuh tajam.", en: "Slang for a stock whose price is pushed up artificially by certain parties, and then usually crashes." } },
+  { id: "fomo", term: { id: "FOMO", en: "FOMO" },
+    def: { id: "Fear of missing out: takut ketinggalan, sehingga membeli saat harga sudah naik tinggi tanpa alasan yang jelas.", en: "Fear of missing out: buying after a big price rise without a clear reason." } },
+  { id: "average-down", term: { id: "Average down", en: "Averaging down" },
+    def: { id: "Membeli lagi saham yang harganya turun agar harga rata-rata beli lebih rendah. Berisiko jika bisnisnya sedang bermasalah.", en: "Buying more of a falling stock to lower your average cost. Risky if the business is in trouble." } },
+  { id: "anggota-bursa", term: { id: "Anggota Bursa (AB)", en: "Exchange Member" },
+    def: { id: "Perusahaan sekuritas yang terdaftar sebagai anggota BEI dan boleh meneruskan order ke bursa.", en: "A brokerage registered as an IDX member and allowed to send orders to the exchange." } },
+  { id: "ksei", term: { id: "KSEI dan AKSes", en: "KSEI and AKSes" },
+    def: { id: "KSEI mencatat kepemilikan efek investor di Indonesia. Lewat AKSes KSEI, investor bisa mengecek sendiri saham dan dananya.", en: "KSEI records investors' securities holdings in Indonesia. Through AKSes KSEI, investors can check their own shares and funds." } }
 ];
 
 /* Term of the day rotates by date */
-TUMBUH.termOfDayIds = ["dividen", "lot", "per", "ihsg", "diversifikasi", "kapitalisasi-pasar", "capital-gain", "lq45", "doji", "der", "ekuitas", "likuid"];
+TUMBUH.termOfDayIds = ["dividen", "lot", "per", "ihsg", "diversifikasi", "kapitalisasi-pasar", "capital-gain", "lq45", "doji", "der", "ekuitas", "likuid", "cum-date", "stock-split", "rights-issue", "fomo"];

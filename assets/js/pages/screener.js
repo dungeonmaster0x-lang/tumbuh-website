@@ -39,6 +39,7 @@
         <h1 style="font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-0.03em">${t("screenerTitle")}</h1>
         <p class="lead" style="font-size:18px">${t("screenerSub")}</p>
         <p style="font-size:14px;color:var(--muted-2)">${t("lq45Note", { period: L(T.lq45Period) })} <a href="pelajaran.html?id=indeks-ihsg-lq45">${t("whatIsThis").replace("IHSG", "LQ45")}</a></p>
+        <a class="link-arrow" href="bandingkan.html" style="align-self:flex-start">${t("cmpTitle")}</a>
       </section>
       <div class="grid-auto" id="preset-buttons">
         ${T.presets.map((p) => `
