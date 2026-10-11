@@ -2,6 +2,7 @@
 # Runs on GitHub's computers, so you don't need to run the script yourself.
 #
 # Run it by hand: GitHub → Actions → "Update prices" → Run workflow.
+# It also runs by itself whenever tools/ or companies.js changes.
 # To run it automatically every weekday after the market closes, remove the
 # "#" in front of the two "schedule" lines below.
 
@@ -9,6 +10,11 @@ name: Update prices
 
 on:
   workflow_dispatch:
+  push:                       # also runs when the price script or stock list changes
+    branches: [main]
+    paths:
+      - "tools/**"
+      - "assets/js/companies.js"
   # schedule:
   #   - cron: "30 10 * * 1-5"   # 17:30 WIB (10:30 UTC), Monday–Friday
 
