@@ -3,8 +3,8 @@
 #
 # Run it by hand: GitHub → Actions → "Update prices" → Run workflow.
 # It also runs by itself whenever tools/ or companies.js changes.
-# To run it automatically every weekday after the market closes, remove the
-# "#" in front of the two "schedule" lines below.
+# It also runs automatically every weekday after the market closes (see
+# "schedule" below). To stop that, put "#" in front of the two schedule lines.
 
 name: Update prices
 
@@ -16,8 +16,8 @@ on:
       - "tools/**"
       - "assets/js/companies.js"
       - ".github/workflows/update-prices.yml"
-  # schedule:
-  #   - cron: "30 10 * * 1-5"   # 17:30 WIB (10:30 UTC), Monday–Friday
+  schedule:
+    - cron: "37 10 * * 1-5"   # 17:37 WIB (10:37 UTC), Monday–Friday, after the market closes
 
 permissions:
   contents: write
