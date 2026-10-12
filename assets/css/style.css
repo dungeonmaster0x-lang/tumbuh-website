@@ -319,63 +319,18 @@ button { cursor: pointer; }
 .summary-strip .fact span:last-child { font-size: 24px; font-weight: 800; }
 @media (max-width: 560px) { .spark { display: none; } }
 
-/* market map — "liquid glass": frosted tiles floating over their own coloured glow */
-.heatmap {
-  position: relative; width: 100%; height: 480px; border-radius: 24px; overflow: hidden; isolation: isolate;
-  background:
-    radial-gradient(120% 80% at 0% 0%, #23324A 0%, transparent 60%),
-    radial-gradient(100% 90% at 100% 100%, #1B2A3F 0%, transparent 55%),
-    #0C1320;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 40px -24px rgba(12,19,32,0.6);
-}
-.hm-glow { position: absolute; inset: 0; filter: blur(22px) saturate(1.35); opacity: 0.95; z-index: 0; }
-.hm-glow i { position: absolute; display: block; transform: scale(0.82); }
-.hm-sector__name {
-  position: absolute; z-index: 3; height: 20px; line-height: 18px; padding: 0 8px; border-radius: 99px; display: block; box-sizing: border-box;
-  font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.92);
-  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.14);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.hm-tile {
-  position: absolute; z-index: 2; box-sizing: border-box; overflow: hidden;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
-  text-decoration: none; color: #FFFFFF; line-height: 1.12; font-variant-numeric: tabular-nums;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.45), 0 0 12px rgba(0,0,0,0.25);
-  background:
-    linear-gradient(160deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.08) 38%, rgba(255,255,255,0) 60%),
-    rgba(var(--tint), 0.38);
-  -webkit-backdrop-filter: blur(18px) saturate(1.7); backdrop-filter: blur(18px) saturate(1.7);
-  border: 1px solid rgba(255,255,255,0.28);
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.55),
-    inset 0 -1px 1px rgba(0,0,0,0.18),
-    inset 0 0 18px rgba(255,255,255,0.06),
-    0 10px 24px -14px rgba(0,0,0,0.65);
-  transition: transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s, background-color .18s;
-}
-/* the curved "specular" shine across the top of each tile */
-.hm-tile::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background:
-    radial-gradient(130% 70% at 30% -15%, rgba(255,255,255,0.34), rgba(255,255,255,0) 60%),
-    radial-gradient(90% 50% at 85% 115%, rgba(255,255,255,0.10), rgba(255,255,255,0) 70%);
-}
-.hm-tile:hover, .hm-tile:focus-visible {
-  color: #FFFFFF; transform: translateY(-2px) scale(1.025); z-index: 4; outline: none;
-  border-color: rgba(255,255,255,0.6);
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.75), inset 0 -1px 1px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.85), 0 16px 32px -14px rgba(0,0,0,0.7);
-}
-.hm-tile strong { position: relative; font-weight: 800; letter-spacing: -0.01em; }
-.hm-tile span { position: relative; font-weight: 700; opacity: 0.95; }
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .hm-tile { background: rgba(var(--tint), 0.85); }
-}
+/* market map */
+.heatmap { position: relative; width: 100%; height: 460px; border-radius: 14px; overflow: hidden; background: var(--surface); }
+.hm-sector { position: absolute; box-sizing: border-box; border: 1px solid var(--surface); }
+.hm-sector__name { position: absolute; left: 6px; top: 1px; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: calc(100% - 12px); }
+.hm-tile { position: absolute; box-sizing: border-box; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; line-height: 1.15; font-variant-numeric: tabular-nums; transition: filter .12s; }
+.hm-tile:hover { filter: brightness(1.08); outline: 2px solid var(--ink); outline-offset: -2px; z-index: 2; }
+.hm-tile strong { font-weight: 800; letter-spacing: -0.01em; }
+.hm-tile span { font-weight: 600; opacity: 0.92; }
 .hm-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 13px; font-weight: 700; color: var(--muted-2); }
-.hm-legend__bar { width: 160px; height: 10px; border-radius: 99px; background: linear-gradient(90deg, #F04B55, #5B667A 50%, #19C37D); box-shadow: inset 0 1px 1px rgba(255,255,255,0.4); }
+.hm-legend__bar { width: 160px; height: 10px; border-radius: 99px; background: linear-gradient(90deg, #B42318, #E6E4DC 50%, #0B6B47); }
 .hm-legend__note { font-weight: 500; margin-left: 8px; }
-@media (max-width: 560px) { .heatmap { height: 580px; border-radius: 20px; } .hm-legend__note { margin-left: 0; flex-basis: 100%; } }
-@media (prefers-reduced-motion: reduce) { .hm-tile { transition: none; } .hm-tile:hover { transform: none; } }
+@media (max-width: 560px) { .heatmap { height: 560px; } .hm-legend__note { margin-left: 0; flex-basis: 100%; } }
 
 /* practice portfolio */
 .pf-intro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; padding: 36px; }
