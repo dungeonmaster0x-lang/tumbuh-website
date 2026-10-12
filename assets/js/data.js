@@ -419,6 +419,266 @@ TUMBUH.lessons = [
     }
   },
   {
+    slug: "saham-reksa-dana-deposito", mins: 7,
+    title: { id: "Saham, reksa dana, atau deposito?", en: "Stocks, mutual funds or deposits?" },
+    desc:  { id: "Membandingkan tiga pilihan simpanan dan investasi yang paling umum di Indonesia.", en: "Comparing the three most common ways to save and invest in Indonesia." },
+    body: {
+      id: `
+<p>Saham bukan satu-satunya cara menumbuhkan uang. Sebelum membeli saham pertama, ada baiknya memahami dua pilihan lain yang sering dibandingkan: deposito dan reksa dana.</p>
+<h2>Deposito: aman, tetapi tumbuh pelan</h2>
+<p>Anda menyimpan uang di bank untuk jangka waktu tertentu dan mendapat bunga tetap. Deposito di bank peserta dijamin <strong>LPS</strong> (Lembaga Penjamin Simpanan) hingga batas tertentu, selama bunganya tidak melebihi batas yang ditetapkan LPS. Risikonya kecil, tetapi bunganya sering hanya sedikit di atas inflasi.</p>
+<h2>Reksa dana: dikelola profesional</h2>
+<p>Uang banyak investor dikumpulkan lalu dikelola oleh <strong>manajer investasi</strong>. Aset reksa dana disimpan oleh bank kustodian, bukan oleh manajer investasinya. Nilainya dihitung setiap hari bursa sebagai <strong>NAB per unit</strong>.</p>
+<ul>
+<li><strong>Pasar uang:</strong> risiko paling rendah, cocok untuk dana jangka pendek.</li>
+<li><strong>Pendapatan tetap:</strong> sebagian besar berisi obligasi.</li>
+<li><strong>Campuran:</strong> gabungan saham dan obligasi.</li>
+<li><strong>Saham:</strong> sebagian besar berisi saham, risiko dan potensi tertinggi.</li>
+</ul>
+<p>Ada juga <strong>ETF</strong>: reksa dana yang diperdagangkan di bursa seperti saham, sering meniru sebuah indeks seperti LQ45.</p>
+<h2>Saham: kendali penuh, risiko penuh</h2>
+<p>Anda memilih sendiri perusahaannya. Potensi keuntungan jangka panjang lebih tinggi, tetapi harga bisa turun tajam dan Anda yang menanggung semua keputusannya.</p>
+<div class="table-wrap"><table><tbody>
+<tr class="sub"><td></td><td class="num">Deposito</td><td class="num">Reksa dana</td><td class="num">Saham</td></tr>
+<tr><td>Risiko</td><td class="num">Rendah</td><td class="num">Rendah–tinggi</td><td class="num">Tinggi</td></tr>
+<tr><td>Potensi hasil</td><td class="num">Rendah</td><td class="num">Sedang</td><td class="num">Tinggi</td></tr>
+<tr><td>Yang memilih aset</td><td class="num">Bank</td><td class="num">Manajer investasi</td><td class="num">Anda</td></tr>
+<tr><td>Waktu yang dibutuhkan</td><td class="num">Sedikit</td><td class="num">Sedikit</td><td class="num">Banyak</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>Tidak harus memilih satu</strong><p>Banyak orang memakai ketiganya: deposito atau reksa dana pasar uang untuk dana darurat, reksa dana untuk tujuan menengah, dan saham untuk tujuan jangka panjang yang mereka pahami.</p></div>`,
+      en: `
+<p>Stocks aren't the only way to grow money. Before buying your first stock, it helps to understand the two options they're most often compared with: deposits and mutual funds.</p>
+<h2>Deposits: safe, but slow</h2>
+<p>You leave money in a bank for a fixed term and earn fixed interest. Deposits at member banks are guaranteed by <strong>LPS</strong> (the deposit insurance agency) up to a limit, as long as the interest rate stays within the cap set by LPS. The risk is low, but the interest is often only a little above inflation.</p>
+<h2>Mutual funds: professionally managed</h2>
+<p>Money from many investors is pooled and managed by an <strong>investment manager</strong>. The fund's assets are held by a custodian bank, not by the manager. Its value is calculated every trading day as <strong>NAV per unit</strong>.</p>
+<ul>
+<li><strong>Money market:</strong> lowest risk, suited to short-term money.</li>
+<li><strong>Fixed income:</strong> mostly bonds.</li>
+<li><strong>Balanced:</strong> a mix of stocks and bonds.</li>
+<li><strong>Equity:</strong> mostly stocks, highest risk and potential.</li>
+</ul>
+<p>There are also <strong>ETFs</strong>: funds traded on the exchange like a stock, often copying an index such as LQ45.</p>
+<h2>Stocks: full control, full risk</h2>
+<p>You choose the companies yourself. The long-term potential is higher, but prices can fall sharply and every decision is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr class="sub"><td></td><td class="num">Deposit</td><td class="num">Mutual fund</td><td class="num">Stocks</td></tr>
+<tr><td>Risk</td><td class="num">Low</td><td class="num">Low–high</td><td class="num">High</td></tr>
+<tr><td>Potential return</td><td class="num">Low</td><td class="num">Medium</td><td class="num">High</td></tr>
+<tr><td>Who picks the assets</td><td class="num">The bank</td><td class="num">Fund manager</td><td class="num">You</td></tr>
+<tr><td>Time needed</td><td class="num">Little</td><td class="num">Little</td><td class="num">A lot</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>You don't have to pick just one</strong><p>Many people use all three: deposits or a money market fund for emergencies, mutual funds for medium-term goals, and stocks they understand for long-term goals.</p></div>`
+    },
+    quiz: {
+      q: { id: "Anda butuh uang untuk biaya sekolah anak 6 bulan lagi. Pilihan mana yang paling masuk akal?", en: "You need money for school fees in 6 months. Which option makes the most sense?" },
+      options: [
+        { id: "Saham pertambangan yang sedang naik", en: "A mining stock that's been rising" },
+        { id: "Deposito atau reksa dana pasar uang", en: "A deposit or a money market fund" },
+        { id: "Reksa dana saham", en: "An equity mutual fund" }
+      ],
+      answer: 1,
+      explain: { id: "Untuk uang yang dibutuhkan dalam waktu dekat, prioritasnya adalah keamanan, bukan potensi hasil tinggi.", en: "For money you'll need soon, safety matters more than high potential returns." }
+    }
+  },
+  {
+    slug: "valuasi-pbv", mins: 8,
+    title: { id: "Mahal atau murah? Dasar valuasi", en: "Expensive or cheap? Valuation basics" },
+    desc:  { id: "Kenapa harga per lembar tidak menunjukkan murah atau mahal, dan cara memakai P/E serta PBV.", en: "Why price per share doesn't tell you cheap or expensive, and how to use P/E and PBV." },
+    body: {
+      id: `
+<p>Saham seharga Rp100 belum tentu murah, dan saham Rp10.000 belum tentu mahal. Yang penting adalah <strong>harga dibandingkan dengan apa yang Anda dapatkan</strong>: laba dan kekayaan perusahaan.</p>
+<h2>Rasio P/E: harga dibanding laba</h2>
+<p>P/E = harga saham ÷ laba per saham. Jika P/E 10x, Anda membayar kira-kira 10 tahun laba perusahaan pada tingkat laba sekarang.</p>
+<h2>PBV: harga dibanding nilai buku</h2>
+<p><strong>Nilai buku</strong> adalah ekuitas perusahaan (aset dikurangi utang). PBV = harga saham ÷ nilai buku per saham.</p>
+<div class="table-wrap"><table><tbody>
+<tr><td>Ekuitas PT Kopi Nusantara</td><td class="num">Rp1.200 miliar</td></tr>
+<tr><td>Jumlah saham</td><td class="num">1 miliar lembar</td></tr>
+<tr class="sub"><td>Nilai buku per saham</td><td class="num">Rp1.200</td></tr>
+<tr><td>Harga saham</td><td class="num">Rp1.800</td></tr>
+<tr class="total"><td>PBV</td><td class="num">1.800 ÷ 1.200 = 1,5x</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>PBV di bawah 1x:</strong> harga lebih rendah dari nilai buku. Bisa murah, atau pasar khawatir ada masalah.</li>
+<li><strong>PBV tinggi:</strong> investor mau membayar mahal, biasanya karena perusahaan sangat menguntungkan (ROE tinggi).</li>
+<li>PBV paling berguna untuk perusahaan yang kekayaannya banyak berupa aset, seperti <strong>bank</strong>.</li>
+</ul>
+<h2>Bandingkan dengan yang sebanding</h2>
+<ul>
+<li><strong>Dengan saham di sektor yang sama.</strong> P/E bank tidak bisa dibandingkan langsung dengan P/E perusahaan teknologi.</li>
+<li><strong>Dengan sejarahnya sendiri.</strong> Apakah P/E sekarang lebih tinggi atau lebih rendah dari biasanya?</li>
+<li><strong>Dengan kualitasnya.</strong> Perusahaan dengan laba yang tumbuh stabil wajar dihargai lebih mahal.</li>
+</ul>
+<div class="callout"><strong>Murah bisa jadi jebakan</strong><p>Saham dengan P/E atau PBV sangat rendah kadang murah karena labanya akan turun atau bisnisnya bermasalah. Selalu cari tahu <em>kenapa</em> sebuah saham murah.</p></div>
+<p>Anda bisa membandingkan P/E dan PBV dua saham sekaligus di halaman <a href="bandingkan.html">Bandingkan</a>.</p>`,
+      en: `
+<p>A IDR 100 stock isn't necessarily cheap, and a IDR 10,000 stock isn't necessarily expensive. What matters is <strong>the price compared with what you get</strong>: the company's profit and net worth.</p>
+<h2>P/E ratio: price versus profit</h2>
+<p>P/E = share price ÷ earnings per share. At a P/E of 10x you're paying roughly 10 years of the company's profit at today's level.</p>
+<h2>PBV: price versus book value</h2>
+<p><strong>Book value</strong> is the company's equity (assets minus debts). PBV = share price ÷ book value per share.</p>
+<div class="table-wrap"><table><tbody>
+<tr><td>PT Kopi Nusantara's equity</td><td class="num">IDR 1,200 bn</td></tr>
+<tr><td>Number of shares</td><td class="num">1 bn</td></tr>
+<tr class="sub"><td>Book value per share</td><td class="num">IDR 1,200</td></tr>
+<tr><td>Share price</td><td class="num">IDR 1,800</td></tr>
+<tr class="total"><td>PBV</td><td class="num">1,800 ÷ 1,200 = 1.5x</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>PBV below 1x:</strong> the price is below book value. It may be cheap, or the market may fear a problem.</li>
+<li><strong>High PBV:</strong> investors pay up, usually because the company is very profitable (high ROE).</li>
+<li>PBV is most useful for companies whose wealth is mostly assets, such as <strong>banks</strong>.</li>
+</ul>
+<h2>Compare like with like</h2>
+<ul>
+<li><strong>With stocks in the same sector.</strong> A bank's P/E can't be compared directly with a tech company's.</li>
+<li><strong>With its own history.</strong> Is today's P/E higher or lower than usual?</li>
+<li><strong>With its quality.</strong> A company with steadily growing profit reasonably deserves a higher price.</li>
+</ul>
+<div class="callout"><strong>Cheap can be a trap</strong><p>Stocks with a very low P/E or PBV are sometimes cheap because profits are about to fall or the business is in trouble. Always find out <em>why</em> a stock is cheap.</p></div>
+<p>You can compare two stocks' P/E and PBV at once on the <a href="bandingkan.html">Compare</a> page.</p>`
+    },
+    quiz: {
+      q: { id: "Harga saham Rp3.000 dan nilai buku per sahamnya Rp2.000. Berapa PBV-nya?", en: "The share price is IDR 3,000 and book value per share is IDR 2,000. What's the PBV?" },
+      options: [
+        { id: "0,67x", en: "0.67x" },
+        { id: "1,5x", en: "1.5x" },
+        { id: "6x", en: "6x" }
+      ],
+      answer: 1,
+      explain: { id: "PBV = harga ÷ nilai buku per saham = 3.000 ÷ 2.000 = 1,5x.", en: "PBV = price ÷ book value per share = 3,000 ÷ 2,000 = 1.5x." }
+    }
+  },
+  {
+    slug: "membaca-berita", mins: 7,
+    title: { id: "Membaca berita dan pengumuman", en: "Reading news and announcements" },
+    desc:  { id: "Membedakan fakta, opini, dan rumor — serta sumber resmi yang perlu Anda kenal.", en: "Telling fact from opinion and rumour — and the official sources worth knowing." },
+    body: {
+      id: `
+<p>Harga saham sering bergerak karena berita. Tetapi tidak semua berita sama nilainya, dan sebagian sengaja dibuat untuk menggerakkan harga.</p>
+<h2>Sumber resmi yang perlu Anda kenal</h2>
+<ul>
+<li><strong>Keterbukaan informasi di situs BEI:</strong> perusahaan tercatat wajib mengumumkan informasi penting di sini, seperti laporan keuangan, aksi korporasi, dan kejadian material.</li>
+<li><strong>Laporan keuangan dan laporan tahunan:</strong> sumber utama untuk memahami kinerja perusahaan.</li>
+<li><strong>Public expose:</strong> paparan publik di mana manajemen menjelaskan kinerja dan rencana perusahaan.</li>
+</ul>
+<h2>Tanda dari bursa</h2>
+<ul>
+<li><strong>UMA (Unusual Market Activity):</strong> pengumuman bursa bahwa pergerakan harga atau volume sebuah saham tidak biasa. Ini peringatan untuk berhati-hati, bukan sinyal beli.</li>
+<li><strong>Suspensi:</strong> perdagangan saham dihentikan sementara oleh bursa, misalnya setelah kenaikan atau penurunan harga yang sangat tajam.</li>
+<li><strong>Notasi khusus:</strong> huruf tambahan di belakang kode saham yang menandakan kondisi tertentu perusahaan. Cek artinya di situs BEI sebelum membeli.</li>
+</ul>
+<h2>Fakta, opini, atau rumor?</h2>
+<ul>
+<li><strong>Fakta:</strong> "Laba kuartal ini naik 12%." Bisa dicek di laporan resmi.</li>
+<li><strong>Opini:</strong> "Saham ini akan naik dua kali lipat." Pendapat seseorang, belum tentu benar.</li>
+<li><strong>Rumor:</strong> "Katanya akan diakuisisi." Tanpa sumber jelas — sering dipakai untuk menggoreng harga.</li>
+</ul>
+<div class="callout"><strong>Empat pertanyaan sebelum bereaksi</strong><p>Siapa sumbernya? Kapan berita ini terbit? Apakah sudah ada di keterbukaan informasi BEI? Apa pengaruhnya pada laba perusahaan dalam jangka panjang?</p></div>
+<p>Ingat juga: saat sebuah berita bagus sampai ke Anda, harga sering sudah bergerak. Bereaksi terburu-buru jarang menguntungkan.</p>`,
+      en: `
+<p>Share prices often move on news. But not all news is equally valuable, and some is created on purpose to move prices.</p>
+<h2>Official sources worth knowing</h2>
+<ul>
+<li><strong>Disclosures on the IDX website:</strong> listed companies must announce important information here, such as financial reports, corporate actions and material events.</li>
+<li><strong>Financial and annual reports:</strong> the main source for understanding how a company is doing.</li>
+<li><strong>Public expose:</strong> a public presentation where management explains results and plans.</li>
+</ul>
+<h2>Signals from the exchange</h2>
+<ul>
+<li><strong>UMA (Unusual Market Activity):</strong> an exchange notice that a stock's price or volume movement is unusual. It's a warning to be careful, not a buy signal.</li>
+<li><strong>Suspension:</strong> the exchange temporarily halts trading in a stock, for example after a very sharp rise or fall.</li>
+<li><strong>Special notations:</strong> extra letters after a stock code that flag certain conditions at the company. Check what they mean on the IDX website before buying.</li>
+</ul>
+<h2>Fact, opinion or rumour?</h2>
+<ul>
+<li><strong>Fact:</strong> "Profit rose 12% this quarter." Can be checked in official reports.</li>
+<li><strong>Opinion:</strong> "This stock will double." Someone's view, not necessarily true.</li>
+<li><strong>Rumour:</strong> "I heard it's being acquired." No clear source — often used to pump prices.</li>
+</ul>
+<div class="callout"><strong>Four questions before you react</strong><p>Who is the source? When was it published? Is it in the IDX disclosures? How does it affect the company's long-term profit?</p></div>
+<p>Remember too: by the time good news reaches you, the price has often already moved. Reacting in a hurry rarely pays.</p>`
+    },
+    quiz: {
+      q: { id: "Bursa mengumumkan UMA pada saham yang harganya naik 60% dalam seminggu. Apa artinya?", en: "The exchange announces UMA on a stock that rose 60% in a week. What does it mean?" },
+      options: [
+        { id: "Bursa merekomendasikan untuk membeli", en: "The exchange recommends buying" },
+        { id: "Pergerakannya tidak biasa — investor diminta berhati-hati", en: "The movement is unusual — investors should be careful" },
+        { id: "Perusahaan pasti sedang bermasalah", en: "The company is definitely in trouble" }
+      ],
+      answer: 1,
+      explain: { id: "UMA adalah peringatan bahwa pergerakan harga atau volume tidak biasa. Itu bukan rekomendasi dan bukan bukti masalah.", en: "UMA warns that price or volume movement is unusual. It's neither a recommendation nor proof of a problem." }
+    }
+  },
+  {
+    slug: "investasi-rutin", mins: 6,
+    title: { id: "Investasi rutin: sedikit demi sedikit", en: "Investing regularly, little by little" },
+    desc:  { id: "Cara kerja menabung saham setiap bulan (DCA), kelebihan, dan batasannya.", en: "How investing a fixed amount every month (DCA) works, its strengths and its limits." },
+    body: {
+      id: `
+<p>Menebak waktu terbaik untuk membeli itu sulit, bahkan untuk investor profesional. Salah satu cara yang sederhana adalah <strong>investasi rutin</strong> atau <strong>DCA</strong> (dollar cost averaging): membeli dengan jumlah uang yang sama secara berkala, misalnya setiap bulan.</p>
+<h2>Cara kerjanya</h2>
+<p>Dengan uang yang sama, Anda otomatis mendapat lebih banyak saham saat harga turun dan lebih sedikit saat harga naik.</p>
+<div class="table-wrap"><table><tbody>
+<tr class="sub"><td>Bulan</td><td class="num">Harga</td><td class="num">Dibeli dengan Rp500.000</td></tr>
+<tr><td>1</td><td class="num">Rp1.000</td><td class="num">5 lot</td></tr>
+<tr><td>2</td><td class="num">Rp800</td><td class="num">6 lot (sisa Rp20.000)</td></tr>
+<tr><td>3</td><td class="num">Rp1.250</td><td class="num">4 lot</td></tr>
+<tr class="total"><td>Total</td><td class="num"></td><td class="num">15 lot, harga rata-rata ±Rp987</td></tr>
+</tbody></table></div>
+<p>Karena saham dibeli per lot, sisa uang yang tidak cukup untuk 1 lot ikut ke bulan berikutnya.</p>
+<h2>Kelebihan</h2>
+<ul>
+<li>Tidak perlu menebak waktu yang tepat.</li>
+<li>Membangun kebiasaan, seperti menabung.</li>
+<li>Mengurangi godaan bereaksi berlebihan terhadap berita harian.</li>
+</ul>
+<h2>Batasannya</h2>
+<ul>
+<li><strong>DCA tidak menyelamatkan saham yang buruk.</strong> Jika bisnisnya terus memburuk, membeli rutin hanya menambah kerugian.</li>
+<li>Biaya transaksi terasa lebih besar untuk pembelian kecil.</li>
+<li>Untuk saham yang terus naik, membeli sekaligus di awal bisa memberi hasil lebih tinggi — tetapi tidak ada yang tahu sebelumnya.</li>
+</ul>
+<div class="callout"><strong>Coba sendiri</strong><p>Di halaman <a href="kalkulator.html#dca">Kalkulator</a>, Anda bisa melihat hasil investasi rutin pada saham LQ45 menggunakan harga masa lalu.</p></div>`,
+      en: `
+<p>Timing the best moment to buy is hard, even for professionals. One simple approach is <strong>regular investing</strong>, or <strong>DCA</strong> (dollar cost averaging): buying with the same amount of money at regular intervals, for example every month.</p>
+<h2>How it works</h2>
+<p>With the same amount of money, you automatically get more shares when prices are low and fewer when they're high.</p>
+<div class="table-wrap"><table><tbody>
+<tr class="sub"><td>Month</td><td class="num">Price</td><td class="num">Bought with IDR 500,000</td></tr>
+<tr><td>1</td><td class="num">IDR 1,000</td><td class="num">5 lots</td></tr>
+<tr><td>2</td><td class="num">IDR 800</td><td class="num">6 lots (IDR 20,000 left)</td></tr>
+<tr><td>3</td><td class="num">IDR 1,250</td><td class="num">4 lots</td></tr>
+<tr class="total"><td>Total</td><td class="num"></td><td class="num">15 lots, average price ≈ IDR 987</td></tr>
+</tbody></table></div>
+<p>Because shares are bought in lots, money that isn't enough for 1 lot carries over to the next month.</p>
+<h2>Strengths</h2>
+<ul>
+<li>No need to guess the right moment.</li>
+<li>Builds a habit, like saving.</li>
+<li>Reduces the urge to overreact to daily news.</li>
+</ul>
+<h2>Limits</h2>
+<ul>
+<li><strong>DCA doesn't rescue a bad stock.</strong> If the business keeps getting worse, buying regularly just adds to the loss.</li>
+<li>Trading fees weigh more on small purchases.</li>
+<li>For a stock that keeps rising, buying everything at the start can earn more — but nobody knows that in advance.</li>
+</ul>
+<div class="callout"><strong>Try it yourself</strong><p>On the <a href="kalkulator.html#dca">Calculator</a> page you can see how regular investing in an LQ45 stock would have turned out using past prices.</p></div>`
+    },
+    quiz: {
+      q: { id: "Dengan investasi rutin Rp1 juta per bulan, apa yang terjadi saat harga saham turun?", en: "Investing IDR 1 million a month, what happens when the share price falls?" },
+      options: [
+        { id: "Anda mendapat lebih banyak saham untuk jumlah uang yang sama", en: "You get more shares for the same money" },
+        { id: "Anda harus berhenti membeli", en: "You have to stop buying" },
+        { id: "Anda pasti untung", en: "You're guaranteed a profit" }
+      ],
+      answer: 0,
+      explain: { id: "Harga lebih rendah berarti uang yang sama membeli lebih banyak lembar. Keuntungan tetap tidak dijamin.", en: "A lower price means the same money buys more shares. A profit is still not guaranteed." }
+    }
+  },
+  {
     slug: "risiko-diversifikasi", mins: 8,
     title: { id: "Risiko & diversifikasi", en: "Risk & diversification" },
     desc:  { id: "Kenapa sebaiknya tidak menaruh semua uang di satu saham.", en: "Why it pays not to put all your money in one stock." },
@@ -626,6 +886,25 @@ TUMBUH.lessons = [
   }
 ];
 
+/* Learning modules: the order lessons appear in, grouped into 3 steps --- */
+TUMBUH.modules = [
+  { key: "dasar", title: { id: "Modul 1 · Dasar-dasar", en: "Module 1 · The basics" },
+    desc: { id: "Apa itu saham, cara membaca harga, dan pilihan investasi lain.", en: "What a stock is, how to read prices, and other ways to invest." },
+    lessons: ["apa-itu-saham", "membaca-harga-saham", "indeks-ihsg-lq45", "saham-reksa-dana-deposito"] },
+  { key: "analisis", title: { id: "Modul 2 · Membaca sebuah saham", en: "Module 2 · Reading a stock" },
+    desc: { id: "Grafik, laporan keuangan, valuasi, dividen, dan berita.", en: "Charts, financial reports, valuation, dividends and news." },
+    lessons: ["grafik-candlestick", "laporan-keuangan", "valuasi-pbv", "dividen-aksi-korporasi", "membaca-berita"] },
+  { key: "praktik", title: { id: "Modul 3 · Mulai berinvestasi", en: "Module 3 · Start investing" },
+    desc: { id: "Mengelola risiko, menghindari kesalahan, dan membeli saham pertama.", en: "Managing risk, avoiding mistakes, and buying your first stock." },
+    lessons: ["risiko-diversifikasi", "kesalahan-pemula", "investasi-rutin", "memilih-sekuritas", "saham-pertama"] }
+];
+/* put lessons in module order (lessons not listed in a module go last) */
+(function () {
+  const order = TUMBUH.modules.flatMap((m) => m.lessons);
+  const rank = (l) => { const i = order.indexOf(l.slug); return i < 0 ? 999 : i; };
+  TUMBUH.lessons.sort((a, b) => rank(a) - rank(b));
+})();
+
 /* Glossary ---------------------------------------------------------------- */
 TUMBUH.glossary = [
   { id: "ara-arb", term: { id: "ARA / ARB", en: "ARA / ARB (auto-rejection)" },
@@ -715,8 +994,31 @@ TUMBUH.glossary = [
   { id: "anggota-bursa", term: { id: "Anggota Bursa (AB)", en: "Exchange Member" },
     def: { id: "Perusahaan sekuritas yang terdaftar sebagai anggota BEI dan boleh meneruskan order ke bursa.", en: "A brokerage registered as an IDX member and allowed to send orders to the exchange." } },
   { id: "ksei", term: { id: "KSEI dan AKSes", en: "KSEI and AKSes" },
-    def: { id: "KSEI mencatat kepemilikan efek investor di Indonesia. Lewat AKSes KSEI, investor bisa mengecek sendiri saham dan dananya.", en: "KSEI records investors' securities holdings in Indonesia. Through AKSes KSEI, investors can check their own shares and funds." } }
+    def: { id: "KSEI mencatat kepemilikan efek investor di Indonesia. Lewat AKSes KSEI, investor bisa mengecek sendiri saham dan dananya.", en: "KSEI records investors' securities holdings in Indonesia. Through AKSes KSEI, investors can check their own shares and funds." } },
+  { id: "pbv", term: { id: "PBV (Price to Book Value)", en: "PBV (price-to-book)" },
+    def: { id: "Harga saham dibagi nilai buku per saham. Menunjukkan berapa kali lipat nilai buku yang dibayar investor.", en: "Share price divided by book value per share. Shows how many times book value investors are paying." },
+    ex: { id: "Harga Rp1.800, nilai buku per saham Rp1.200 → PBV 1,5x.", en: "IDR 1,800 price, IDR 1,200 book value per share → PBV 1.5x." } },
+  { id: "nilai-buku", term: { id: "Nilai buku", en: "Book value" },
+    def: { id: "Ekuitas perusahaan menurut laporan keuangan, yaitu aset dikurangi liabilitas.", en: "A company's equity in its financial statements: assets minus liabilities." } },
+  { id: "reksa-dana", term: { id: "Reksa dana", en: "Mutual fund" },
+    def: { id: "Wadah yang mengumpulkan dana banyak investor untuk dikelola manajer investasi dalam saham, obligasi, atau pasar uang.", en: "A vehicle pooling many investors' money, managed by an investment manager in stocks, bonds or money markets." } },
+  { id: "nab", term: { id: "NAB (Nilai Aktiva Bersih)", en: "NAV (net asset value)" },
+    def: { id: "Nilai total aset reksa dana dikurangi kewajibannya. NAB per unit adalah \"harga\" satu unit reksa dana.", en: "A fund's total assets minus liabilities. NAV per unit is the \"price\" of one fund unit." } },
+  { id: "etf", term: { id: "ETF", en: "ETF" },
+    def: { id: "Exchange Traded Fund: reksa dana yang diperdagangkan di bursa seperti saham, sering meniru sebuah indeks.", en: "Exchange Traded Fund: a fund traded on the exchange like a stock, often copying an index." } },
+  { id: "manajer-investasi", term: { id: "Manajer investasi", en: "Investment manager" },
+    def: { id: "Perusahaan berizin OJK yang mengelola dana reksa dana atas nama investor.", en: "An OJK-licensed company that manages mutual fund money on behalf of investors." } },
+  { id: "lps", term: { id: "LPS", en: "LPS" },
+    def: { id: "Lembaga Penjamin Simpanan: menjamin simpanan nasabah di bank peserta hingga batas tertentu.", en: "Indonesia's deposit insurance agency: guarantees customers' deposits at member banks up to a limit." } },
+  { id: "dca", term: { id: "DCA (investasi rutin)", en: "DCA (regular investing)" },
+    def: { id: "Dollar cost averaging: membeli dengan jumlah uang yang sama secara berkala, tanpa menebak waktu terbaik.", en: "Dollar cost averaging: buying with the same amount of money at regular intervals, without timing the market." } },
+  { id: "uma", term: { id: "UMA", en: "UMA" },
+    def: { id: "Unusual Market Activity: pengumuman bursa bahwa pergerakan harga atau volume sebuah saham tidak biasa.", en: "Unusual Market Activity: an exchange notice that a stock's price or volume movement is unusual." } },
+  { id: "suspensi", term: { id: "Suspensi", en: "Suspension" },
+    def: { id: "Penghentian sementara perdagangan sebuah saham oleh bursa.", en: "A temporary halt in trading of a stock by the exchange." } },
+  { id: "keterbukaan-informasi", term: { id: "Keterbukaan informasi", en: "Disclosure" },
+    def: { id: "Pengumuman resmi perusahaan tercatat yang wajib dipublikasikan melalui bursa, misalnya laporan keuangan dan aksi korporasi.", en: "Official announcements listed companies must publish through the exchange, such as financial reports and corporate actions." } }
 ];
 
 /* Term of the day rotates by date */
-TUMBUH.termOfDayIds = ["dividen", "lot", "per", "ihsg", "diversifikasi", "kapitalisasi-pasar", "capital-gain", "lq45", "doji", "der", "ekuitas", "likuid", "cum-date", "stock-split", "rights-issue", "fomo"];
+TUMBUH.termOfDayIds = ["dividen", "lot", "per", "ihsg", "diversifikasi", "kapitalisasi-pasar", "capital-gain", "lq45", "doji", "der", "ekuitas", "likuid", "cum-date", "stock-split", "rights-issue", "fomo", "pbv", "dca", "etf", "uma"];

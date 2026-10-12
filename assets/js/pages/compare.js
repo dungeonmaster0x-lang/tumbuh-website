@@ -86,6 +86,7 @@
       { k: "cmpRangePos", va: Math.round(T.rangePos(A) * 100) + "%", vb: Math.round(T.rangePos(B) * 100) + "%", note: "cmpNoteRange" },
       { k: "cmpCap", va: cap(A), vb: cap(B), note: "cmpNoteCap", g: "kapitalisasi-pasar" },
       { k: "cmpPE", va: A.pe == null ? "—" : T.num(A.pe, 1) + "x", vb: B.pe == null ? "—" : T.num(B.pe, 1) + "x", note: "cmpNotePE", g: "per" },
+      { k: "cmpPBV", va: A.pbv == null ? "—" : T.num(A.pbv, 2) + "x", vb: B.pbv == null ? "—" : T.num(B.pbv, 2) + "x", note: "cmpNotePBV", g: "pbv" },
       { k: "colYield", va: pctOrDash(A.divYield), vb: pctOrDash(B.divYield), note: "cmpNoteYield", g: "imbal-hasil-dividen" },
       { k: "cmpROE", va: roe(A.roe), vb: roe(B.roe), note: "cmpNoteROE", g: "roe" },
       { k: "sector", va: L(T.sectors[A.sector]), vb: L(T.sectors[B.sector]), note: A.sector === B.sector ? "cmpNoteSameSector" : "cmpNoteDiffSector" }

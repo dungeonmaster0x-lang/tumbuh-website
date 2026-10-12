@@ -48,6 +48,11 @@
                   : { id: "Angka ini belum tersedia untuk saham ini.", en: "This figure isn't available for this stock yet." })
           : { id: `Harga saham ÷ laba per saham. P/E ${T.num(s.pe, 1)}x berarti dengan laba seperti sekarang, perlu sekitar ${T.num(s.pe, 0)} tahun laba untuk menyamai harga saham.`, en: `Share price ÷ earnings per share. A P/E of ${T.num(s.pe, 1)}x means that at today's profit level it would take about ${T.num(s.pe, 0)} years of earnings to equal the share price.` },
         tag: s.pe == null ? (loss ? { id: "Belum laba", en: "No profit yet" } : { id: "Data tidak tersedia", en: "No data" }) : { id: "Bandingkan dengan sektor", en: "Compare within sector" }, glossary: "per" },
+      { label: { id: "PBV", en: "PBV" }, value: s.pbv == null ? "—" : T.num(s.pbv, 2) + "x",
+        meaning: { id: "Harga saham dibanding nilai buku (kekayaan bersih) per saham.", en: "Share price compared with book value (net worth) per share." },
+        help: { id: `Harga ÷ nilai buku per saham. PBV ${s.pbv == null ? "" : T.num(s.pbv, 2) + "x"} berarti investor membayar ${s.pbv == null ? "" : T.num(s.pbv, 1)} kali nilai buku perusahaan. Paling berguna untuk membandingkan bank.`, en: `Price ÷ book value per share. A PBV of ${s.pbv == null ? "" : T.num(s.pbv, 2) + "x"} means investors pay ${s.pbv == null ? "" : T.num(s.pbv, 1)} times the company's book value. Most useful for comparing banks.` },
+        tag: s.pbv == null ? { id: "", en: "" } : s.pbv < 1 ? { id: "Di bawah nilai buku", en: "Below book value" } : s.pbv <= 3 ? { id: "1–3x nilai buku", en: "1–3x book value" } : { id: "Jauh di atas nilai buku", en: "Well above book value" },
+        glossary: "pbv", field: "pbv" },
       { label: { id: "Imbal hasil dividen", en: "Dividend yield" }, value: T.pct(s.divYield, 1, false),
         meaning: { id: "Perkiraan dividen setahun dibanding harga saham saat ini.", en: "Expected yearly dividends compared with today's share price." },
         help: s.divYield > 0

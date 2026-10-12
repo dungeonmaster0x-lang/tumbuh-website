@@ -222,6 +222,7 @@
           ${link("belajar.html", "navLearn", "learn")}
           ${link("kamus.html", "navGlossary", "glossary")}
           ${link("penyaring.html", "navScreener", "screener")}
+          ${link("kalkulator.html", "navCalc", "calc")}
           <a href="pantau.html" ${active === "watch" ? 'aria-current="page"' : ""}><span data-i18n="navWatch"></span><span class="nav-count" id="watch-count" hidden></span></a>
         </nav>
         <div class="search" role="search">
@@ -253,6 +254,7 @@
           <a href="penyaring.html" data-i18n="navScreener"></a>
           <a href="pantau.html" data-i18n="navWatch"></a>
           <a href="bandingkan.html" data-i18n="navCompare"></a>
+          <a href="kalkulator.html" data-i18n="navCalc"></a>
         </nav>
       </div>
     </footer>`;

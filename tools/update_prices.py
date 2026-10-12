@@ -17,7 +17,7 @@ What it fills in for each stock:
     high52, low52           highest / lowest close over the last 12 months
     history                 daily closes for up to 5 years (for the charts)
     volumeM                 shares traded on the last day (millions)
-    marketCapT, pe,         from Yahoo Finance when available; left empty
+    marketCapT, pe, pbv,    from Yahoo Finance when available; left empty
     divYield, roe           (shown as "—" on the site) when not
 
 Data comes from Yahoo Finance through the free `yfinance` library. It is
@@ -114,6 +114,9 @@ def fundamentals(symbol: str) -> dict:
     elif t_pct == 0 and not f_pct:
         out["divYield"] = 0.0                                 # both fields agree: no dividend
     # anything else stays empty and shows as "—" on the site
+    pbv = info.get("priceToBook")
+    if isinstance(pbv, (int, float)) and 0 < pbv < 100:
+        out["pbv"] = round(pbv, 2)
     roe = info.get("returnOnEquity")
     if isinstance(roe, (int, float)):
         out["roe"] = round(roe * 100, 1)
@@ -144,7 +147,7 @@ def main() -> None:
 
         year = year_slice(data)
         # Start fresh: never mix sample numbers with real ones.
-        entry = {"marketCapT": None, "pe": None, "divYield": None, "roe": None}
+        entry = {"marketCapT": None, "pe": None, "pbv": None, "divYield": None, "roe": None}
         entry.update({
             "price": round(float(data.Close.iloc[-1]), 2),
             "prevClose": round(float(data.Close.iloc[-2]), 2),

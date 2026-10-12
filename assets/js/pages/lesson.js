@@ -9,6 +9,7 @@
     const l = T.lessons[i];
     const prev = T.lessons[i - 1], next = T.lessons[i + 1];
     const isDone = T.doneLessons().includes(l.slug);
+    const mod = (T.modules || []).find((m) => m.lessons.includes(l.slug));
     const q = l.quiz;
     document.title = L(l.title) + " — Tumbuh";
 
@@ -16,6 +17,7 @@
       <article class="lesson">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="belajar.html">${t("navLearn")}</a><span aria-hidden="true">›</span>
+          ${mod ? `<a href="belajar.html#mod-${mod.key}">${L(mod.title)}</a><span aria-hidden="true">›</span>` : ""}
           <span>${t("lessonOf", { n: i + 1, total: T.lessons.length })}</span>
         </nav>
         <div class="progress" aria-hidden="true"><span style="width:${((i + 1) / T.lessons.length) * 100}%"></span></div>

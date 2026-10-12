@@ -26,12 +26,13 @@ tumbuh-website/
 ├── penyaring.html      Simple screener — penyaring.html?pilih=dividend,big
 ├── pantau.html         Watchlist: the stocks you starred (saved in your browser)
 ├── bandingkan.html     Compare two stocks — bandingkan.html?a=BBCA&b=BBRI
+├── kalkulator.html     Calculators: lots, profit after fees, monthly investing (DCA)
 ├── assets/
 │   ├── css/style.css   All styling. Colours and sizes are at the top (":root")
 │   ├── img/favicon.svg Logo / browser tab icon
 │   └── js/
 │       ├── companies.js    The 45 LQ45 companies + sectors (ID + EN)
-│       ├── data.js         Lessons, glossary, screener presets (ID + EN)
+│       ├── data.js         Lessons, modules, glossary, screener presets (ID + EN)
 │       ├── market-data.js  Prices — sample data, or real data from the Python script
 │       ├── i18n.js         All interface text in both languages + number formatting
 │       ├── core.js         Header, footer, search, charts, shared helpers
@@ -62,7 +63,7 @@ Run it again whenever you want fresh numbers. The data is delayed and meant for 
 | Change any button or label text | `assets/js/i18n.js` (both `id` and `en`) |
 | Add or remove a stock | edit `TUMBUH.companies` in `companies.js`, then run the price script (it reads the codes from there) |
 | Update LQ45 after a review | IDX re-evaluates the index regularly; update `companies.js` and `TUMBUH.lq45Period` |
-| Add a lesson | copy one entry in `TUMBUH.lessons` (`data.js`) and change the `slug`, text and quiz |
+| Add a lesson | copy one entry in `TUMBUH.lessons` (`data.js`), change the `slug`, text and quiz, then add the slug to a module in `TUMBUH.modules` |
 | Add a glossary term | add an entry to `TUMBUH.glossary` (`data.js`) |
 
 Every text has an `id` (Indonesian) and an `en` (English) version. If you forget one, the Indonesian text is shown.

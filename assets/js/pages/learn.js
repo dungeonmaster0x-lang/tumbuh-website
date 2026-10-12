@@ -21,10 +21,24 @@
         ${next ? `<a class="btn btn--primary btn--lg" style="align-self:flex-start" href="pelajaran.html?id=${next.slug}">${t("ctaStart")}: ${L(next.title)} ${T.icon("arrow", 18)}</a>` : ""}
       </section>
 
-      <ol class="stack" style="list-style:none;margin:8px 0 0;padding:0;gap:14px">
-        ${T.lessons.map((l, i) => {
-          const isDone = done.includes(l.slug);
-          return `<li>
+      ${T.modules.map((m) => {
+        const items = m.lessons.map((slug) => T.lessons.find((l) => l.slug === slug)).filter(Boolean);
+        const mDone = items.filter((l) => done.includes(l.slug)).length;
+        const mins = items.reduce((a, l) => a + l.mins, 0);
+        return `
+      <section class="stack" style="gap:14px" aria-labelledby="mod-${m.key}">
+        <div class="section-head" style="align-items:flex-end;padding-top:8px">
+          <div class="stack" style="gap:4px">
+            <h2 id="mod-${m.key}" style="font-size:24px;font-weight:800">${L(m.title)}</h2>
+            <p style="color:var(--muted)">${L(m.desc)}</p>
+          </div>
+          <span class="mins" style="background:${mDone === items.length ? "var(--up-bg)" : "#F3F2EC"};color:${mDone === items.length ? "var(--up)" : "var(--muted-2)"}">${t("moduleProgress", { n: mDone, total: items.length, mins })}</span>
+        </div>
+        <ol class="stack" style="list-style:none;margin:0;padding:0;gap:12px">
+          ${items.map((l) => {
+            const i = T.lessons.indexOf(l);
+            const isDone = done.includes(l.slug);
+            return `<li>
             <a class="card card--link" href="pelajaran.html?id=${l.slug}" style="flex-direction:row;align-items:center;gap:18px">
               <span class="step-num ${isDone ? "is-done" : ""}" style="flex:none">${isDone ? T.icon("check", 18, 'stroke-width="3"') : i + 1}</span>
               <span class="stack" style="gap:4px;flex:1;min-width:0">
@@ -34,8 +48,10 @@
               <span class="mins" style="flex:none">${isDone ? t("done") : t("minutes", { n: l.mins })}</span>
             </a>
           </li>`;
-        }).join("")}
-      </ol>
+          }).join("")}
+        </ol>
+      </section>`;
+      }).join("")}
 
       ${n > 0 ? `<button type="button" class="btn btn--ghost" id="reset" style="align-self:flex-start">${t("resetProgress")}</button>` : ""}
 
