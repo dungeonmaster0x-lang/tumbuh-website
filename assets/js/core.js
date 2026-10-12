@@ -364,14 +364,13 @@
     const A = p(a), B = p(b);
     return "#" + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, "0")).join("");
   }
+  /* Glass palette: vivid colours that glow through the frosted tiles */
+  const NEUTRAL = "#5B667A", UP = "#19C37D", DOWN = "#F04B55";
   function colourFor(change, period) {
-    const t = Math.min(Math.abs(change) / RANGE[period], 1);
-    return change >= 0 ? mix("#E6E4DC", "#0B6B47", t) : mix("#E6E4DC", "#B42318", t);
+    const t = Math.pow(Math.min(Math.abs(change) / RANGE[period], 1), 0.8);
+    return change >= 0 ? mix(NEUTRAL, UP, t) : mix(NEUTRAL, DOWN, t);
   }
-  const darkText = (hex) => {
-    const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.45;
-  };
+  const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(",");
 
   T.heatmapChange = function (s, period) {
     if (period === "1D") return s.change;
@@ -380,31 +379,35 @@
   };
 
   T.drawHeatmap = function (el, period) {
-    const W = el.clientWidth, H = el.clientHeight;
-    if (!W || !H) return;
+    const PAD = 8;                                         /* room for the glow around the edge */
+    const W = el.clientWidth - PAD * 2, H = el.clientHeight - PAD * 2;
+    if (W <= 0 || H <= 0) return;
     const stocks = T.allStocks().map((s) => Object.assign({}, s, { v: Math.max(s.marketCapT || 1, 1), chg: T.heatmapChange(s, period) }));
     const bySector = {};
     stocks.forEach((s) => (bySector[s.sector] = bySector[s.sector] || []).push(s));
     const sectors = Object.entries(bySector).map(([k, list]) => ({ k, list: list.sort((a, b) => b.v - a.v), v: list.reduce((a, s) => a + s.v, 0) }))
       .sort((a, b) => b.v - a.v);
-    const gap = 2;
-    let html = "";
-    squarify(sectors, 0, 0, W, H).forEach((sec) => {
-      const label = sec.w > 70 && sec.h > 60;
-      const top = label ? 18 : 0;
-      html += `<div class="hm-sector" style="left:${sec.x}px;top:${sec.y}px;width:${sec.w}px;height:${sec.h}px">${label ? `<span class="hm-sector__name">${T.esc(T.L(T.sectors[sec.k]))}</span>` : ""}</div>`;
+    const gap = 5;
+    let glow = "", tiles = "", labels = "";
+    squarify(sectors, PAD, PAD, W, H).forEach((sec) => {
+      const label = sec.w > 70 && sec.h > 64;
+      const top = label ? 24 : 0;
+      if (label) labels += `<span class="hm-sector__name" style="left:${sec.x + 4}px;top:${sec.y + 2}px;max-width:${sec.w - 12}px">${T.esc(T.L(T.sectors[sec.k]))}</span>`;
       squarify(sec.list, sec.x, sec.y + top, sec.w, sec.h - top).forEach((r) => {
-        const bg = colourFor(r.chg, period);
-        const fs = Math.max(10, Math.min(22, Math.min(r.w / 4, r.h / 2.6)));
-        const showCode = r.w > 34 && r.h > 20, showPct = r.w > 48 && r.h > 40;
+        const c = colourFor(r.chg, period);
+        const x = r.x + gap / 2, y = r.y + gap / 2, w = Math.max(r.w - gap, 0), h = Math.max(r.h - gap, 0);
+        const radius = Math.max(6, Math.min(18, Math.min(w, h) / 5));
+        const fs = Math.max(10, Math.min(24, Math.min(w / 4, h / 2.6)));
+        const showCode = w > 32 && h > 20, showPct = w > 46 && h > 40;
         const pct = T.pct(r.chg, period === "1D" ? 2 : 1);
-        html += `<a class="hm-tile" href="saham.html?kode=${r.code}"
-          style="left:${r.x + gap / 2}px;top:${r.y + gap / 2}px;width:${Math.max(r.w - gap, 0)}px;height:${Math.max(r.h - gap, 0)}px;background:${bg};color:${darkText(bg) ? "#16202E" : "#FFFFFF"}"
+        glow += `<i style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};border-radius:${radius}px"></i>`;
+        tiles += `<a class="hm-tile" href="saham.html?kode=${r.code}"
+          style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;--tint:${rgb(c)};border-radius:${radius}px"
           aria-label="${r.code}, ${T.esc(r.name)}, ${pct}" title="${r.code} · ${T.esc(r.name)} · ${pct}">
-          ${showCode ? `<strong style="font-size:${fs}px">${r.code}</strong>` : ""}${showPct ? `<span style="font-size:${Math.max(10, fs * 0.62)}px">${pct}</span>` : ""}
+          ${showCode ? `<strong style="font-size:${fs}px">${r.code}</strong>` : ""}${showPct ? `<span style="font-size:${Math.max(10, fs * 0.6)}px">${pct}</span>` : ""}
         </a>`;
       });
     });
-    el.innerHTML = html;
+    el.innerHTML = `<div class="hm-glow" aria-hidden="true">${glow}</div>${labels}${tiles}`;
   };
 })();
