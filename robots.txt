@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dungeonmaster0x-lang.github.io/tumbuh-website/sitemap.xml

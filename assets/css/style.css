@@ -475,6 +475,26 @@ button { cursor: pointer; }
 .gl-hint { display: flex; gap: 8px; align-items: center; font-size: 14px !important; color: var(--muted) !important; }
 .gl-hint svg { flex: none; color: var(--accent); }
 
+/* daily recap */
+.rc-story { display: flex; flex-direction: column; gap: 8px; font-size: 18px; color: var(--ink-2); }
+.rc-h { font-size: 20px; font-weight: 800; }
+.rc-days { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.rc-days .chip { display: inline-flex; align-items: center; flex: none; text-decoration: none; white-space: nowrap; }
+.rc-big { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.rc-slash { color: var(--muted-2); font-weight: 600; }
+.rc-small { font-size: 13px; color: var(--muted-2); }
+.rc-breadth { display: flex; height: 10px; border-radius: 99px; overflow: hidden; background: var(--tint); }
+.rc-breadth span { display: block; height: 100%; }
+.rc-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.rc-empty { color: var(--muted); font-size: 14px; }
+.rc-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.rc-chips .tag { text-decoration: none; }
+.rc-active { list-style: none; margin: 0; padding: 0; counter-reset: rc; }
+.rc-active li a { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--grid); text-decoration: none; color: var(--ink); font-size: 15px; }
+.rc-active li a::before { counter-increment: rc; content: counter(rc); width: 22px; color: var(--muted-2); font-weight: 700; }
+.rc-active li a strong { flex: 1; }
+@media (max-width: 860px) { .rc-cols { grid-template-columns: minmax(0, 1fr); } .rc-story { font-size: 16px; } }
+
 /* achievements */
 .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
 .ach { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 18px; background: var(--surface); border: 1px dashed var(--line-strong); color: var(--muted); }

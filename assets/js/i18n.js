@@ -15,6 +15,11 @@ TUMBUH.STRINGS = {
   /* header + footer */
   skip:        { id: "Langsung ke konten", en: "Skip to content" },
   navMarkets:  { id: "Pasar", en: "Markets" },
+  navRecap:    { id: "Ringkasan", en: "Recap" },
+  share:       { id: "Bagikan", en: "Share" },
+  shareCopied: { id: "Tautan disalin", en: "Link copied" },
+  shareStock:  { id: "{code} ({name}) dijelaskan dengan bahasa sederhana di Tumbuh.", en: "{code} ({name}) explained in plain language on Tumbuh." },
+  shareCopy:   { id: "Salin tautan ini:", en: "Copy this link:" },
   navLearn:    { id: "Belajar", en: "Learn" },
   navGlossary: { id: "Kamus", en: "Glossary" },
   navScreener: { id: "Penyaring", en: "Screener" },
@@ -71,6 +76,53 @@ TUMBUH.STRINGS = {
 
   themeDark:   { id: "Mode gelap", en: "Dark mode" },
   themeLight:  { id: "Mode terang", en: "Light mode" },
+
+  /* daily recap */
+  rcEyebrow:   { id: "Ringkasan pasar harian", en: "Daily market recap" },
+  rcTitle:     { id: "Ringkasan pasar", en: "Market recap" },
+  rcHeading:   { id: "Ringkasan pasar, {date}", en: "Market recap, {date}" },
+  rcNoData:    { id: "Ringkasan muncul setelah data harga sungguhan dimuat.", en: "The recap appears once real price data has been loaded." },
+  rcIx_bigDown:{ id: "Hari yang berat: IHSG turun tajam {pct} dan ditutup di {v}.", en: "A tough day: the IHSG fell sharply, down {pct} to close at {v}." },
+  rcIx_down:   { id: "IHSG turun {pct} dan ditutup di {v}.", en: "The IHSG fell {pct} to close at {v}." },
+  rcIx_flat:   { id: "Hari yang tenang: IHSG nyaris tidak bergerak ({pct}) dan ditutup di {v}.", en: "A quiet day: the IHSG barely moved ({pct}) and closed at {v}." },
+  rcIx_up:     { id: "IHSG naik {pct} dan ditutup di {v}.", en: "The IHSG rose {pct} to close at {v}." },
+  rcIx_bigUp:  { id: "Hari yang hijau: IHSG naik tajam {pct} dan ditutup di {v}.", en: "A strong day: the IHSG jumped {pct} to close at {v}." },
+  rcBreadth:   { id: "Dari {n} saham LQ45, {up} naik, {down} turun dan {flat} tidak berubah.", en: "Of the {n} LQ45 stocks, {up} rose, {down} fell and {flat} were unchanged." },
+  rcLeaders:   { id: "{a} naik paling tinggi ({pa}), sedangkan {b} turun paling dalam ({pb}).", en: "{a} rose the most ({pa}), while {b} fell the most ({pb})." },
+  rcLeaderUp:  { id: "{a} naik paling tinggi ({pa}).", en: "{a} rose the most ({pa})." },
+  rcLeaderDown:{ id: "{b} turun paling dalam ({pb}).", en: "{b} fell the most ({pb})." },
+  rcSectors:   { id: "Sektor terkuat: {a} ({pa}). Sektor terlemah: {b} ({pb}).", en: "Strongest sector: {a} ({pa}). Weakest: {b} ({pb})." },
+  rcWeekUp:    { id: "Dalam 5 hari bursa terakhir, IHSG naik {pct}.", en: "Over the last 5 trading days, the IHSG is up {pct}." },
+  rcWeekDown:  { id: "Dalam 5 hari bursa terakhir, IHSG turun {pct}.", en: "Over the last 5 trading days, the IHSG is down {pct}." },
+  rcLatest:    { id: "Ke ringkasan terbaru", en: "Go to the latest recap" },
+  rcPickDay:   { id: "Hari bursa lain", en: "Other trading days" },
+  rc5d:        { id: "5 hari", en: "5 days" },
+  rc1m:        { id: "1 bulan", en: "1 month" },
+  rcBreadthTitle:{ id: "Naik / turun", en: "Up / down" },
+  rcBreadthSub:{ id: "{up} naik · {down} turun · {flat} tetap", en: "{up} up · {down} down · {flat} unchanged" },
+  rcTopUp:     { id: "Naik paling tinggi", en: "Biggest gain" },
+  rcTopDown:   { id: "Turun paling dalam", en: "Biggest fall" },
+  rcGainers:   { id: "5 kenaikan terbesar", en: "Top 5 gainers" },
+  rcLosers:    { id: "5 penurunan terbesar", en: "Top 5 losers" },
+  rcNoneUp:    { id: "Tidak ada saham LQ45 yang naik hari itu.", en: "No LQ45 stock rose that day." },
+  rcNoneDown:  { id: "Tidak ada saham LQ45 yang turun hari itu.", en: "No LQ45 stock fell that day." },
+  rcSectorTitle:{ id: "Sektor", en: "Sectors" },
+  rcSectorNote:{ id: "Rata-rata perubahan harga saham LQ45 di tiap sektor.", en: "Average price change of the LQ45 stocks in each sector." },
+  rcActive:    { id: "Paling ramai diperdagangkan", en: "Most traded" },
+  rcActiveNote:{ id: "Perkiraan nilai transaksi: volume × harga penutupan.", en: "Estimated value traded: volume × closing price." },
+  rcBillion:   { id: "miliar", en: "billion" },
+  rcExtremes:  { id: "Rekor 1 tahun", en: "1-year records" },
+  rcExtremesSub:{ id: "Saham yang ditutup di atas titik tertinggi atau di bawah titik terendah setahun terakhir.", en: "Stocks that closed above their highest or below their lowest close of the past year." },
+  rcHighs:     { id: "Tertinggi baru", en: "New highs" },
+  rcLows:      { id: "Terendah baru", en: "New lows" },
+  rcNone:      { id: "Tidak ada", en: "None" },
+  rcMeans:     { id: "Apa artinya untuk pemula?", en: "What does this mean for a beginner?" },
+  rcTip_bigDown:{ id: "Hari merah besar terasa menakutkan, tapi penurunan seperti ini sudah sering terjadi. Menjual karena panik adalah salah satu kesalahan pemula yang paling mahal.", en: "Big red days feel scary, but drops like this have happened many times before. Selling in a panic is one of the costliest beginner mistakes." },
+  rcTip_down:  { id: "Pasar turun itu biasa. Kalau Anda berinvestasi rutin, harga yang lebih rendah berarti uang yang sama membeli lebih banyak lembar.", en: "Falling markets are normal. If you invest regularly, lower prices mean the same money buys more shares." },
+  rcTip_flat:  { id: "Hari yang tenang adalah waktu yang baik untuk belajar — misalnya membaca laporan keuangan perusahaan yang Anda incar.", en: "Quiet days are a good time to learn — for example, reading the financial report of a company you're interested in." },
+  rcTip_up:    { id: "Pasar naik terasa menyenangkan. Tetap sebar uang Anda ke beberapa saham dan sektor supaya tidak bergantung pada satu cerita.", en: "Rising markets feel good. Keep your money spread across several stocks and sectors so you don't depend on one story." },
+  rcTip_bigUp: { id: "Saat semua orang membicarakan kenaikan, godaan untuk ikut-ikutan (FOMO) paling kuat. Membeli hanya karena harga sedang naik adalah kesalahan pemula yang umum.", en: "When everyone is talking about a rally, the urge to join in (FOMO) is strongest. Buying only because the price is rising is a common beginner mistake." },
+  rcFoot:      { id: "Ringkasan ini disusun otomatis dari harga penutupan setiap hari bursa setelah pukul 17.37 WIB. Sumber: Yahoo Finance. Hanya untuk belajar, bukan saran investasi.", en: "This recap is written automatically from closing prices every trading day after 17:37 WIB. Source: Yahoo Finance. For learning only, not investment advice." },
 
   /* glossary pop-ups */
   glHint:      { id: "Kata bergaris titik-titik bisa ditekan untuk melihat artinya.", en: "Words with a dotted underline can be tapped to see what they mean." },
@@ -280,7 +332,7 @@ TUMBUH.STRINGS = {
   heroEyebrow: { id: "Untuk investor pemula", en: "For first-time investors" },
   heroTitle:   { id: "Pahami pasar saham, <mark>satu langkah</mark> setiap kali.", en: "Understand the stock market, <mark>one step</mark> at a time." },
   heroSub:     { id: "Harga, grafik, dan istilah dijelaskan dengan bahasa sehari-hari. Tanpa jargon, tanpa tekanan.", en: "Prices, charts and terms explained in everyday language. No jargon, no pressure." },
-  heroCta2:    { id: "Lihat pasar hari ini", en: "See today's market" },
+  heroCta2:    { id: "Ringkasan pasar hari ini", en: "Today's market recap" },
   ihsgLabel:   { id: "IHSG", en: "IDX Composite" },
   ihsgName:    { id: "Indeks Harga Saham Gabungan", en: "IHSG — Indonesia's main stock index" },
   whatIsThis:  { id: "Apa itu IHSG?", en: "What is IHSG?" },
@@ -315,7 +367,6 @@ TUMBUH.STRINGS = {
   today:       { id: "dari penutupan sebelumnya", en: "since previous close" },
   watch:       { id: "Pantau", en: "Watch" },
   watching:    { id: "Dipantau", en: "Watching" },
-  share:       { id: "Salin tautan", en: "Copy link" },
   copied:      { id: "Tautan disalin", en: "Link copied" },
   priceUp:     { id: "Harga naik {pct} dibanding penutupan sebelumnya.", en: "The price is up {pct} since the previous close." },
   priceDown:   { id: "Harga turun {pct} dibanding penutupan sebelumnya.", en: "The price is down {pct} since the previous close." },
@@ -458,5 +509,7 @@ TUMBUH.STRINGS = {
   };
   TUMBUH.date = (iso) =>
     new Intl.DateTimeFormat(locale(), { day: "numeric", month: "long", year: "numeric" }).format(new Date(iso + "T00:00:00"));
+  TUMBUH.dateShort = (iso) =>
+    new Intl.DateTimeFormat(locale(), { weekday: "short", day: "numeric", month: "short" }).format(new Date(iso + "T00:00:00"));
   TUMBUH.esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 })();

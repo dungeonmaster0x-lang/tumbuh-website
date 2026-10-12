@@ -28,9 +28,14 @@ tumbuh-website/
 ├── bandingkan.html     Compare two stocks — bandingkan.html?a=BBCA&b=BBRI
 ├── kalkulator.html     Calculators: lots, profit after fees, monthly investing (DCA)
 ├── latihan.html        Practice portfolio: Rp100 juta pretend money, real closing prices
+├── prestasi.html       Achievements and the printable completion certificate
+├── ringkasan.html      Daily market recap — ringkasan.html?tgl=2026-10-09 for an earlier day
+├── s/  p/              Share pages with link previews (made by tools/build_pages.js)
+├── sitemap.xml, robots.txt   For search engines (made by tools/build_pages.js)
 ├── assets/
 │   ├── css/style.css   All styling. Colours and sizes are at the top (":root")
 │   ├── img/favicon.svg Logo / browser tab icon
+│   ├── img/og*.png     Pictures shown in link previews (WhatsApp, X, Facebook)
 │   └── js/
 │       ├── companies.js    The 45 LQ45 companies + sectors (ID + EN)
 │       ├── data.js         Lessons, modules, glossary, screener presets (ID + EN)
@@ -40,6 +45,7 @@ tumbuh-website/
 │       └── pages/*.js      One script per page
 └── tools/
     ├── update_prices.py    Downloads real prices into market-data.js
+    ├── build_pages.js      Link previews, share pages, sitemap (node tools/build_pages.js)
     └── requirements.txt
 ```
 
@@ -66,6 +72,8 @@ Run it again whenever you want fresh numbers. The data is delayed and meant for 
 | Update LQ45 after a review | IDX re-evaluates the index regularly; update `companies.js` and `TUMBUH.lq45Period` |
 | Add a lesson | copy one entry in `TUMBUH.lessons` (`data.js`), change the `slug`, text and quiz, then add the slug to a module in `TUMBUH.modules` |
 | Add a glossary term | add an entry to `TUMBUH.glossary` (`data.js`) |
+| Change a page's Google description or share card | the `PAGES` list in `tools/build_pages.js`, then run `node tools/build_pages.js` |
+| Move to your own domain | change `SITE` at the top of `tools/build_pages.js`, then run it |
 
 Every text has an `id` (Indonesian) and an `en` (English) version. If you forget one, the Indonesian text is shown.
 

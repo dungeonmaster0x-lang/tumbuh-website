@@ -25,6 +25,7 @@
           <span class="mins" style="align-self:flex-start">${t("minutes", { n: l.mins })}</span>
           <h1>${L(l.title)}</h1>
           <p class="lead" style="font-size:19px">${L(l.desc)}</p>
+          <div style="align-self:flex-start">${T.shareBtn(L(l.title), L(l.desc), "p/" + l.slug + ".html")}</div>
         </header>
 
         <div class="stack lesson-body" style="gap:18px">${L(l.body)}</div>

@@ -34,6 +34,8 @@
     lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
     sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
     moon: '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+    news: '<path d="M4 5h13v14H6a2 2 0 0 1-2-2V5z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5M8 16h3"/>',
+    share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
     print: '<path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2"/><rect x="6" y="14" width="12" height="7"/>'
 
   };
@@ -230,6 +232,7 @@
         <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" data-i18n-attr="aria-label:menu">${T.icon("menu", 22)}</button>
         <nav class="nav" id="main-nav" aria-label="Main">
           ${link("index.html#pasar", "navMarkets", "home")}
+          ${link("ringkasan.html", "navRecap", "recap")}
           ${link("belajar.html", "navLearn", "learn")}
           ${link("kamus.html", "navGlossary", "glossary")}
           ${link("penyaring.html", "navScreener", "screener")}
@@ -270,6 +273,7 @@
           <a href="kalkulator.html" data-i18n="navCalc"></a>
           <a href="latihan.html" data-i18n="navPractice"></a>
           <a href="prestasi.html" data-i18n="navAch"></a>
+          <a href="ringkasan.html" data-i18n="navRecap"></a>
         </nav>
       </div>
     </footer>`;
@@ -336,6 +340,26 @@
     document.getElementById("theme-btn").addEventListener("click", () => T.setTheme(T.theme() === "dark" ? "light" : "dark"));
     run();
   };
+
+  /* ---- share ----------------------------------------------------------- */
+  /* T.shareBtn(title, text, path): phone share sheet, or copy the link.
+     path is relative to the site, e.g. "s/BBCA.html" (a page with a
+     preview card for WhatsApp/X that forwards to the real page).          */
+  T.shareBtn = (title, text, path) =>
+    `<button type="button" class="btn btn--ghost" data-share="${T.esc(path)}" data-share-title="${T.esc(title)}" data-share-text="${T.esc(text || "")}">${T.icon("share", 18)}<span>${T.t("share")}</span></button>`;
+  document.addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-share]");
+    if (!b) return;
+    const url = new URL(b.dataset.share, location.href).href;
+    const label = b.querySelector("span");
+    try {
+      if (navigator.share) { await navigator.share({ title: b.dataset.shareTitle, text: b.dataset.shareText, url }); T.track("share"); return; }
+    } catch (err) { if (err && err.name === "AbortError") return; }
+    try { await navigator.clipboard.writeText(url); label.textContent = T.t("shareCopied"); }
+    catch (err) { window.prompt(T.t("shareCopy"), url); }
+    T.track("share");
+    setTimeout(() => (label.textContent = T.t("share")), 2200);
+  });
 
   /* ---- dark mode ------------------------------------------------------- */
   /* The <head> of every page sets data-theme early (no white flash).

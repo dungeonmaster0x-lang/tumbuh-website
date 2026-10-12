@@ -203,7 +203,7 @@
           ${T.icon("star", 18, isWatched ? 'fill="currentColor"' : "")}${t(isWatched ? "watching" : "watch")}
         </button>
         <a class="btn btn--ghost" href="bandingkan.html?a=${s.code}&b=${(similar[0] || T.allStocks().find((x) => x.code !== s.code)).code}">${t("compareWith")}</a>
-        <button type="button" class="btn btn--ghost" id="share-btn" style="width:48px;padding:0" aria-label="${t("share")}" title="${t("share")}">${T.icon("link", 20)}</button>
+        ${T.shareBtn(s.code + " — " + s.name, t("shareStock", { code: s.code, name: s.name }), "s/" + s.code + ".html")}
       </div>
     </section>
 
@@ -337,11 +337,6 @@
       openHelp = open ? i : null;
     }));
     document.getElementById("watch-btn").addEventListener("click", toggleWatch);
-    document.getElementById("share-btn").addEventListener("click", (e) => {
-      const btn = e.currentTarget;
-      const done = () => { btn.title = t("copied"); btn.setAttribute("aria-label", t("copied")); btn.style.borderColor = "var(--up)"; };
-      if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, () => {}); else done();
-    });
   }
 
   T.boot("stock", render);
