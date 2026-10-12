@@ -70,9 +70,18 @@ def read_existing() -> dict:
         return {}
 
 
+WIB = dt.timezone(dt.timedelta(hours=7))   # Jakarta time
+MARKET_SETTLED = dt.time(16, 30)           # by then the day's closing price is final
+
+
 def closes(symbol: str, period: str = "5y"):
     data = yf.Ticker(symbol).history(period=period, interval="1d", auto_adjust=False)
     data = data.dropna(subset=["Close"])
+    # If the script runs while the market is still open, Yahoo's row for today is a
+    # mid-session price, not a close. Leave it out until the market has closed.
+    now = dt.datetime.now(WIB)
+    if len(data) and data.index[-1].date() == now.date() and now.time() < MARKET_SETTLED:
+        data = data.iloc[:-1]
     return data
 
 
