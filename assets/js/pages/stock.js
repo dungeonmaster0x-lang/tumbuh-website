@@ -143,6 +143,8 @@
         <p style="color:var(--ink-2)">${ttm > 0
           ? t("divTTM", { code, amt: T.idr(ttm), pct: T.pct((ttm / s.price) * 100, 1, false) })
           : t("divNoTTM", { code })} ${t("divLast", { amt: T.idr(last[1]), date: T.date(last[0]) })}</p>
+        ${ttm > 0 && s.divYield > 0 && Math.abs((ttm / s.price) * 100 - s.divYield) >= 0.5 ? `
+        <div class="note-dashed">${T.icon("info", 20, 'style="flex:none;color:var(--accent)"')}<span>${t("divNote", { a: T.pct((ttm / s.price) * 100, 1, false), b: T.pct(s.divYield, 1, false) })}</span></div>` : ""}
         <div class="div-chart" role="img" aria-label="${T.esc(t("divChartLabel", { code }))}">${bars}</div>
         <p class="div-caption">${t("divCaption")}</p>
         <details class="div-list">
