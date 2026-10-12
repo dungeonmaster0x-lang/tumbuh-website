@@ -26,13 +26,22 @@
     coins: '<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
     tag: '<path d="M3 12V4h8l10 10-8 8-10-10z"/><path d="M7.5 8h.01"/>',
     bag: '<path d="M5 8h14l-1 13H6L5 8zM9 8V6a3 3 0 0 1 6 0v2"/>',
-    book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/>'
+    book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/>',
+    trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+    flag: '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+    eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    layers: '<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    moon: '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+    print: '<path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2"/><rect x="6" y="14" width="12" height="7"/>'
+
   };
   T.icon = (name, size = 20, extra = "") =>
     `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${ICONS[name] || ""}</svg>`;
 
   /* Logo: a seedling rising out of a rising line — Tumbuh means "grow" */
-  T.logo = (size = 32, bg = "#16202E") => `
+  T.logo = (size = 32, bg = "var(--logo)") => `
     <svg width="${size}" height="${size}" viewBox="0 0 32 32" aria-hidden="true">
       <rect width="32" height="32" rx="10" fill="${bg}"/>
       <path d="M7 23.5 L13 18 L17 20.5 L25 12" stroke="#F2B33D" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -116,16 +125,16 @@
     const color = up ? "var(--up-line)" : "var(--down-line)";
     const line = values.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join(" ");
     const base = opts.baseline != null
-      ? `<line x1="0" x2="${W}" y1="${y(opts.baseline)}" y2="${y(opts.baseline)}" stroke="#C9C6BB" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>` : "";
+      ? `<line x1="0" x2="${W}" y1="${y(opts.baseline)}" y2="${y(opts.baseline)}" stroke="var(--rule)" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>` : "";
     el.innerHTML = `
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${T.esc(opts.label || "")}">
-        <line x1="0" x2="${W}" y1="${pad}" y2="${pad}" stroke="#ECEAE3" vector-effect="non-scaling-stroke"/>
-        <line x1="0" x2="${W}" y1="${H / 2}" y2="${H / 2}" stroke="#ECEAE3" vector-effect="non-scaling-stroke"/>
-        <line x1="0" x2="${W}" y1="${H - pad}" y2="${H - pad}" stroke="#ECEAE3" vector-effect="non-scaling-stroke"/>
+        <line x1="0" x2="${W}" y1="${pad}" y2="${pad}" stroke="var(--grid)" vector-effect="non-scaling-stroke"/>
+        <line x1="0" x2="${W}" y1="${H / 2}" y2="${H / 2}" stroke="var(--grid)" vector-effect="non-scaling-stroke"/>
+        <line x1="0" x2="${W}" y1="${H - pad}" y2="${H - pad}" stroke="var(--grid)" vector-effect="non-scaling-stroke"/>
         ${base}
         <path d="${line} L${W},${H} L0,${H} Z" fill="${color}" fill-opacity="0.09"/>
         <path d="${line}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <line class="cursor" x1="0" x2="0" y1="0" y2="${H}" stroke="#16202E" stroke-opacity="0" vector-effect="non-scaling-stroke"/>
+        <line class="cursor" x1="0" x2="0" y1="0" y2="${H}" stroke="var(--ink)" stroke-opacity="0" vector-effect="non-scaling-stroke"/>
       </svg>
       ${opts.showLabels ? `<span class="chart__label num" style="top:0">${T.idr(hi)}</span><span class="chart__label num" style="bottom:0">${T.idr(lo)}</span>` : ""}
       <span class="chart__tip num" aria-hidden="true"></span>`;
@@ -168,6 +177,7 @@
     try { localStorage.setItem(WKEY, JSON.stringify(list)); } catch (e) { /* ignore */ }
     updateNavCount();
     watchListeners.forEach((fn) => fn(code));
+    if (T.checkAchievements) T.checkAchievements();
   };
   const watchListeners = [];
   T.onWatch = (fn) => watchListeners.push(fn);
@@ -205,6 +215,7 @@
     const set = new Set(T.doneLessons());
     done ? set.add(slug) : set.delete(slug);
     try { localStorage.setItem(PKEY, JSON.stringify([...set])); } catch (e) { /* ignore */ }
+    if (T.checkAchievements) T.checkAchievements();
   };
 
   /* ---- header & footer ------------------------------------------------- */
@@ -227,10 +238,11 @@
           <a href="pantau.html" ${active === "watch" ? 'aria-current="page"' : ""}><span data-i18n="navWatch"></span><span class="nav-count" id="watch-count" hidden></span></a>
         </nav>
         <div class="search" role="search">
-          ${T.icon("search", 18, 'style="color:#5B6472;flex:none"')}
+          ${T.icon("search", 18, 'style="color:var(--muted-2);flex:none"')}
           <input id="stock-search" type="search" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list" data-i18n-attr="placeholder:search,aria-label:search">
           <ul class="search-results" id="search-results" role="listbox"></ul>
         </div>
+        <button type="button" class="theme-btn" id="theme-btn" aria-pressed="false" data-i18n-attr="aria-label:themeDark,title:themeDark">${T.icon("moon", 20)}</button>
         <div class="lang-toggle" role="group" aria-label="Bahasa / Language">
           <button type="button" data-lang="id" aria-pressed="false">ID</button>
           <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -257,6 +269,7 @@
           <a href="bandingkan.html" data-i18n="navCompare"></a>
           <a href="kalkulator.html" data-i18n="navCalc"></a>
           <a href="latihan.html" data-i18n="navPractice"></a>
+          <a href="prestasi.html" data-i18n="navAch"></a>
         </nav>
       </div>
     </footer>`;
@@ -279,7 +292,7 @@
       if (!q) return close();
       const hits = T.allStocks().filter((s) => s.code.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)).slice(0, 6);
       list.innerHTML = hits.length
-        ? hits.map((s, i) => `<li role="option" id="opt-${i}"><a href="saham.html?kode=${s.code}">${T.badge(s.code)}<span style="flex:1;min-width:0"><strong>${s.code}</strong><br><span style="font-size:13px;color:#5B6472">${T.esc(s.name)}</span></span>${T.pill(s.change, "sm")}</a></li>`).join("")
+        ? hits.map((s, i) => `<li role="option" id="opt-${i}"><a href="saham.html?kode=${s.code}">${T.badge(s.code)}<span style="flex:1;min-width:0"><strong>${s.code}</strong><br><span style="font-size:13px;color:var(--muted-2)">${T.esc(s.name)}</span></span>${T.pill(s.change, "sm")}</a></li>`).join("")
         : `<li class="empty">${t("searchNone")}</li>`;
       list.classList.add("is-open"); input.setAttribute("aria-expanded", "true"); active = -1;
     };
@@ -315,10 +328,42 @@
     });
     setupSearch();
     updateNavCount();
-    const run =() => { T.applyStatic(); banner(); if (render) render(); T.applyStatic(); };
+    const run = () => { T.applyStatic(); banner(); if (render) render(); T.applyStatic(); };
+    setTimeout(() => { if (T.checkAchievements) T.checkAchievements(); }, 600);
     T.onLang(run);
+    themeRuns.push(run);
+    syncThemeBtn();
+    document.getElementById("theme-btn").addEventListener("click", () => T.setTheme(T.theme() === "dark" ? "light" : "dark"));
     run();
   };
+
+  /* ---- dark mode ------------------------------------------------------- */
+  /* The <head> of every page sets data-theme early (no white flash).
+     Saved choice wins; otherwise follow the device setting.               */
+  const themeRuns = [];
+  T.theme = () => (document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+  function syncThemeBtn() {
+    const b = document.getElementById("theme-btn");
+    if (!b) return;
+    const dark = T.theme() === "dark";
+    b.setAttribute("aria-pressed", String(dark));
+    b.innerHTML = T.icon(dark ? "sun" : "moon", 20);
+  }
+  function applyTheme(v) {
+    if (v === "dark") document.documentElement.dataset.theme = "dark";
+    else document.documentElement.removeAttribute("data-theme");
+    syncThemeBtn();
+    themeRuns.forEach((fn) => fn());
+  }
+  T.setTheme = function (v) {
+    try { localStorage.setItem("tumbuh-theme", v); } catch (e) { /* ignore */ }
+    applyTheme(v);
+  };
+  try {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const follow = () => { let saved = null; try { saved = localStorage.getItem("tumbuh-theme"); } catch (e) { /* */ } if (!saved) applyTheme(mq.matches ? "dark" : "light"); };
+    if (mq.addEventListener) mq.addEventListener("change", follow);
+  } catch (e) { /* old browser */ }
 })();
 
 /* ==========================================================================
@@ -359,6 +404,10 @@
     return out;
   }
 
+  function neutral() {
+    const v = getComputedStyle(document.documentElement).getPropertyValue("--heat-neutral").trim();
+    return /^#[0-9a-f]{6}$/i.test(v) ? v : "#E6E4DC";
+  }
   function mix(a, b, t) {
     const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
     const A = p(a), B = p(b);
@@ -366,7 +415,8 @@
   }
   function colourFor(change, period) {
     const t = Math.min(Math.abs(change) / RANGE[period], 1);
-    return change >= 0 ? mix("#E6E4DC", "#0B6B47", t) : mix("#E6E4DC", "#B42318", t);
+    const n = neutral();
+    return change >= 0 ? mix(n, "#0B6B47", t) : mix(n, "#B42318", t);
   }
   const darkText = (hex) => {
     const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
@@ -406,5 +456,248 @@
       });
     });
     el.innerHTML = html;
+  };
+})();
+
+/* ==========================================================================
+   Candlesticks: T.ohlc(code, days) and T.drawCandles(el, bars, opts)
+   ========================================================================== */
+(function () {
+  const T = window.TUMBUH;
+
+  /* [{o,h,l,c,d}] for the last `days` trading days. Real when the price script
+     has saved them; otherwise made up around the (sample) closing prices. */
+  T.ohlc = function (code, days) {
+    const m = T.market.stocks[code];
+    const hist = T.history(code, days);
+    if (m && m.ohlc && m.ohlc.length) {
+      const bars = m.ohlc.slice(-days);
+      const dates = hist.dates ? hist.dates.slice(-bars.length) : null;
+      return { bars: bars.map((b, i) => ({ o: b[0], h: b[1], l: b[2], c: b[3], d: dates ? dates[i] : null })), sample: false };
+    }
+    let s = [...code].reduce((a, ch) => a * 31 + ch.charCodeAt(0), 11) % 233280;
+    const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    const pts = hist.points;
+    const bars = pts.map((c, i) => {
+      const o = i ? pts[i - 1] * (1 + (rnd() - 0.5) * 0.008) : c;
+      const top = Math.max(o, c), bot = Math.min(o, c);
+      return { o, c, h: top * (1 + rnd() * 0.012), l: bot * (1 - rnd() * 0.012), d: hist.dates ? hist.dates[i] : null };
+    });
+    return { bars, sample: true };
+  };
+
+  T.drawCandles = function (el, bars, opts = {}) {
+    const W = 800, H = 280, pad = 14, n = bars.length;
+    const lo = Math.min(...bars.map((b) => b.l)), hi = Math.max(...bars.map((b) => b.h));
+    const step = W / n, body = Math.max(1.2, step * 0.62);
+    const x = (i) => step * i + step / 2;
+    const y = (v) => pad + (H - 2 * pad) * (1 - (v - lo) / (hi - lo || 1));
+    const candles = bars.map((b, i) => {
+      const up = b.c >= b.o, col = up ? "var(--up-line)" : "var(--down-line)";
+      const top = y(Math.max(b.o, b.c)), bh = Math.max(1, Math.abs(y(b.o) - y(b.c)));
+      return `<line x1="${x(i).toFixed(1)}" x2="${x(i).toFixed(1)}" y1="${y(b.h).toFixed(1)}" y2="${y(b.l).toFixed(1)}" stroke="${col}" stroke-width="1" vector-effect="non-scaling-stroke"/>` +
+        `<rect x="${(x(i) - body / 2).toFixed(1)}" y="${top.toFixed(1)}" width="${body.toFixed(1)}" height="${bh.toFixed(1)}" fill="${col}"/>`;
+    }).join("");
+    el.innerHTML = `
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${T.esc(opts.label || "")}">
+        <line x1="0" x2="${W}" y1="${pad}" y2="${pad}" stroke="var(--grid)" vector-effect="non-scaling-stroke"/>
+        <line x1="0" x2="${W}" y1="${H / 2}" y2="${H / 2}" stroke="var(--grid)" vector-effect="non-scaling-stroke"/>
+        <line x1="0" x2="${W}" y1="${H - pad}" y2="${H - pad}" stroke="var(--grid)" vector-effect="non-scaling-stroke"/>
+        ${candles}
+        <rect class="cursor" x="0" y="0" width="${step}" height="${H}" fill="var(--ink)" fill-opacity="0"/>
+      </svg>
+      <span class="chart__label num" style="top:0">${T.idr(hi)}</span><span class="chart__label num" style="bottom:0">${T.idr(lo)}</span>
+      <span class="chart__tip num" aria-hidden="true"></span>`;
+    const svg = el.querySelector("svg"), tip = el.querySelector(".chart__tip"), cursor = el.querySelector(".cursor");
+    svg.addEventListener("pointermove", (e) => {
+      const r = svg.getBoundingClientRect();
+      const ratio = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 0.9999);
+      const i = Math.floor(ratio * n), b = bars[i];
+      const L = T.lang() === "id" ? ["B", "T", "R", "P"] : ["O", "H", "L", "C"];
+      tip.textContent = `${L[0]} ${T.num(b.o)} · ${L[1]} ${T.num(b.h)} · ${L[2]} ${T.num(b.l)} · ${L[3]} ${T.num(b.c)}` + (b.d ? " · " + T.date(b.d) : "");
+      tip.style.left = Math.min(Math.max(ratio * r.width, 150), r.width - 150) + "px";
+      tip.classList.add("is-on");
+      cursor.setAttribute("x", step * i); cursor.setAttribute("fill-opacity", "0.06");
+    });
+    svg.addEventListener("pointerleave", () => { tip.classList.remove("is-on"); cursor.setAttribute("fill-opacity", "0"); });
+  };
+})();
+
+/* ==========================================================================
+   Glossary pop-ups: T.linkGlossary(container) turns the first mention of each
+   glossary term inside lesson text into a button that shows its definition.
+   ========================================================================== */
+(function () {
+  const T = window.TUMBUH;
+  let pop = null, openBtn = null;
+
+  function aliases(label) {
+    const out = [];
+    const base = label.replace(/\s*\(.*?\)\s*/g, " ").trim();
+    base.split(/\s*\/\s*/).forEach((p) => out.push(p.trim()));
+    if (base.includes("/")) out.push(base);
+    const paren = (label.match(/\((.*?)\)/) || [])[1];
+    if (paren && paren.length <= 12 && !/\s/.test(paren.trim()) ) out.push(paren.trim());
+    return out.filter((a) => a.length >= 3);
+  }
+
+  function close() {
+    if (!pop) return;
+    pop.hidden = true;
+    if (openBtn) { openBtn.setAttribute("aria-expanded", "false"); }
+    openBtn = null;
+  }
+
+  function open(btn) {
+    const g = T.glossary.find((x) => x.id === btn.dataset.g);
+    if (!g) return;
+    if (!pop) {
+      pop = document.createElement("div");
+      pop.className = "gl-pop"; pop.id = "gl-pop"; pop.setAttribute("role", "dialog"); pop.hidden = true;
+      document.body.appendChild(pop);
+      document.addEventListener("click", (e) => { if (pop && !pop.hidden && !e.target.closest(".gl-pop, .gl-term")) close(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && pop && !pop.hidden) { const b = openBtn; close(); if (b) b.focus(); } });
+      window.addEventListener("resize", close);
+    }
+    if (openBtn === btn && !pop.hidden) { close(); return; }
+    close();
+    pop.setAttribute("aria-label", T.L(g.term));
+    pop.innerHTML = `
+      <strong class="gl-pop__term">${T.esc(T.L(g.term))}</strong>
+      <p>${T.esc(T.L(g.def))}</p>
+      ${g.ex ? `<p class="gl-pop__ex"><b>${T.t("example")}:</b> ${T.esc(T.L(g.ex))}</p>` : ""}
+      <a href="kamus.html#${g.id}">${T.t("openGlossary")} →</a>`;
+    pop.hidden = false;
+    const r = btn.getBoundingClientRect();
+    const w = Math.min(320, window.innerWidth - 24);
+    pop.style.width = w + "px";
+    pop.style.left = Math.max(12, Math.min(r.left + window.scrollX, window.scrollX + window.innerWidth - w - 12)) + "px";
+    const below = r.bottom + window.scrollY + 8;
+    pop.style.top = below + "px";
+    if (r.bottom + pop.offsetHeight + 16 > window.innerHeight && r.top > pop.offsetHeight + 16) {
+      pop.style.top = (r.top + window.scrollY - pop.offsetHeight - 8) + "px";
+    }
+    btn.setAttribute("aria-expanded", "true");
+    openBtn = btn;
+    if (T.track) T.track("glossaryPop");
+  }
+
+  T.linkGlossary = function (root) {
+    const terms = [];
+    T.glossary.forEach((g) => aliases(T.L(g.term)).forEach((a) => terms.push({ a, id: g.id })));
+    terms.sort((x, y) => y.a.length - x.a.length);
+    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp("(?<![\\p{L}\\p{N}])(" + terms.map((t) => esc(t.a)).join("|") + ")(?![\\p{L}\\p{N}])", "iu");
+    const used = new Set();
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => n.parentElement.closest("p, li") && !n.parentElement.closest("a, button, .callout strong, h1, h2, h3, figure, table")
+        ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      let text = node.nodeValue, frag = null, m;
+      while (text && (m = re.exec(text))) {
+        const hit = terms.find((t) => t.a.toLowerCase() === m[1].toLowerCase());
+        frag = frag || document.createDocumentFragment();
+        frag.appendChild(document.createTextNode(text.slice(0, m.index)));
+        if (hit && !used.has(hit.id)) {
+          used.add(hit.id);
+          const b = document.createElement("button");
+          b.type = "button"; b.className = "gl-term"; b.dataset.g = hit.id;
+          b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", "gl-pop");
+          b.textContent = m[1];
+          b.addEventListener("click", (e) => { e.stopPropagation(); open(b); });
+          frag.appendChild(b);
+        } else {
+          frag.appendChild(document.createTextNode(m[1]));
+        }
+        text = text.slice(m.index + m[1].length);
+      }
+      if (frag) { frag.appendChild(document.createTextNode(text)); node.parentNode.replaceChild(frag, node); }
+    });
+    return used.size;
+  };
+})();
+
+/* ==========================================================================
+   Achievements: T.track(event), T.achievements(), T.checkAchievements()
+   Everything is stored in this browser only.
+   ========================================================================== */
+(function () {
+  const T = window.TUMBUH;
+  const EKEY = "tumbuh-events", BKEY = "tumbuh-badges";
+  const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+  const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* ignore */ } };
+
+  /* count an activity; "quizFirst:slug"-style keys are counted once each */
+  T.track = function (key) {
+    const ev = read(EKEY, {});
+    ev[key] = (ev[key] || 0) + 1;
+    write(EKEY, ev);
+    T.checkAchievements();
+  };
+
+  function facts() {
+    const ev = read(EKEY, {});
+    const done = T.doneLessons();
+    const pf = read("tumbuh-practice", null);
+    const sectorsHeld = pf ? new Set(Object.keys(pf.holdings || {}).map((c) => (T.companies[c] || {}).sector)).size : 0;
+    return {
+      lessons: done.length,
+      modDone: (k) => { const m = (T.modules || []).find((x) => x.key === k); return !!m && m.lessons.every((sl) => done.includes(sl)); },
+      quizFirst: Object.keys(ev).filter((k) => k.startsWith("quizFirst:")).length,
+      glossary: ev.glossaryPop || 0,
+      watch: T.watchlist().length,
+      compare: ev.compare || 0,
+      dca: ev.dca || 0,
+      trades: pf ? (pf.trades || []).length : 0,
+      sectorsHeld
+    };
+  }
+
+  /* titles and hints live in i18n.js as ach_<key> / achHint_<key> */
+  T.achievements = function () {
+    const f = facts(), total = T.lessons.length;
+    return [
+      ["first", "flag", 1, f.lessons],
+      ["dasar", "book", 1, f.modDone("dasar") ? 1 : 0],
+      ["analisis", "bulb", 1, f.modDone("analisis") ? 1 : 0],
+      ["praktik", "check", 1, f.modDone("praktik") ? 1 : 0],
+      ["quiz", "star", 5, f.quizFirst],
+      ["glossary", "tag", 10, f.glossary],
+      ["watch", "eye", 3, f.watch],
+      ["compare", "layers", 1, f.compare],
+      ["dca", "coins", 1, f.dca],
+      ["trade", "bag", 1, f.trades],
+      ["diverse", "building", 3, f.sectorsHeld],
+      ["graduate", "trophy", total, f.lessons]
+    ].map(([key, icon, goal, now]) => ({ key, icon, goal, now: Math.min(now, goal), done: now >= goal }));
+  };
+
+  let toastTimer = null;
+  function toast(list) {
+    let el = document.getElementById("ach-toast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "ach-toast"; el.className = "ach-toast"; el.setAttribute("role", "status"); el.setAttribute("aria-live", "polite");
+      document.body.appendChild(el);
+    }
+    const first = list[0];
+    el.innerHTML = `<span class="ach-toast__icon">${T.icon(first.icon, 22)}</span>
+      <span class="stack" style="gap:2px;min-width:0"><small>${T.t(list.length > 1 ? "achNewMany" : "achNew", { n: list.length })}</small>
+      <strong>${T.t("ach_" + first.key)}</strong></span>
+      <a href="prestasi.html">${T.t("achSee")}</a>`;
+    el.classList.add("is-on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("is-on"), 5000);
+  }
+
+  T.checkAchievements = function () {
+    const got = read(BKEY, []);
+    const fresh = T.achievements().filter((a) => a.done && !got.includes(a.key));
+    if (!fresh.length) return;
+    write(BKEY, got.concat(fresh.map((a) => a.key)));
+    toast(fresh);
   };
 })();

@@ -35,7 +35,7 @@
         <h1 style="font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-0.03em">${t("glossaryTitle")}</h1>
         <p class="lead" style="font-size:18px">${t("glossarySub")}</p>
         <label class="search" style="flex:none;max-width:520px;height:50px">
-          ${T.icon("search", 18, 'style="color:#5B6472;flex:none"')}
+          ${T.icon("search", 18, 'style="color:var(--muted-2);flex:none"')}
           <input id="term-search" type="search" value="${T.esc(query)}" placeholder="${t("glossarySearch")}" aria-label="${t("glossarySearch")}">
         </label>
         <nav class="alpha" id="alpha" aria-label="A–Z"></nav>

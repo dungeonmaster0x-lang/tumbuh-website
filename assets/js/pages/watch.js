@@ -26,7 +26,7 @@
     if (!list.length) {
       main.innerHTML = head + `
         <section class="card stack" style="gap:18px;align-items:flex-start">
-          <span class="icon-tile" style="background:var(--turmeric-soft);color:#B07A10">${T.icon("star", 24)}</span>
+          <span class="icon-tile" style="background:var(--turmeric-soft);color:var(--turmeric-ink)">${T.icon("star", 24)}</span>
           <h2 style="font-size:22px;font-weight:800">${t("watchEmpty")}</h2>
           <p style="color:var(--muted);max-width:560px">${t("watchEmptySub")}</p>
           <div class="grid-auto" style="width:100%;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px">

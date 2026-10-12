@@ -3,7 +3,7 @@
   const T = window.TUMBUH, t = T.t, L = T.L;
   const params = new URLSearchParams(location.search);
   const RANGES = { "1M": 22, "6M": 126, "1Y": 250, "5Y": 1250 };
-  const COLORS = ["#1F4FD8", "#D9771E"];          /* blue + orange: easy to tell apart, not "up/down" colours */
+  const COLORS = ["var(--cmp-a)", "var(--cmp-b)"];          /* blue + orange: easy to tell apart, not "up/down" colours */
   const codes = T.stockCodes();
   let a = (params.get("a") || "BBCA").toUpperCase();
   let b = (params.get("b") || "BBRI").toUpperCase();
@@ -36,10 +36,10 @@
     const path = (pts) => pts.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join(" ");
     el.innerHTML = `
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${T.esc(t("cmpChartLabel", { a, b }))}">
-        <line x1="0" x2="${W}" y1="${y(1000000)}" y2="${y(1000000)}" stroke="#C9C6BB" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+        <line x1="0" x2="${W}" y1="${y(1000000)}" y2="${y(1000000)}" stroke="var(--rule)" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
         <path d="${path(s.a)}" fill="none" stroke="${COLORS[0]}" stroke-width="2.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
         <path d="${path(s.b)}" fill="none" stroke="${COLORS[1]}" stroke-width="2.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <line class="cursor" x1="0" x2="0" y1="0" y2="${H}" stroke="#16202E" stroke-opacity="0" vector-effect="non-scaling-stroke"/>
+        <line class="cursor" x1="0" x2="0" y1="0" y2="${H}" stroke="var(--ink)" stroke-opacity="0" vector-effect="non-scaling-stroke"/>
       </svg>
       <span class="chart__label num" style="top:0">${T.idr(hi)}</span>
       <span class="chart__label num" style="bottom:0">${T.idr(lo)}</span>
@@ -166,6 +166,7 @@
       <div class="note-dashed">${T.icon("info", 20)}<span>${t("cmpDisclaimer")}</span></div>`;
 
     drawChart();
+    if (!render.tracked) { render.tracked = true; T.track("compare"); }
     document.getElementById("cmp-ranges").addEventListener("click", (e) => {
       const btn = e.target.closest("[data-r]");
       if (btn) { range = btn.dataset.r; drawChart(); }

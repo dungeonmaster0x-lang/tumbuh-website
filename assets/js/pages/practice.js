@@ -70,6 +70,7 @@
     ui.msg = { ok: true, text: t(ui.side === "buy" ? "tradeBought" : "tradeSold", { lots: ui.lots, code: ui.code, price: T.idr(pv.p) }) };
     snapshot();
     render();
+    T.checkAchievements();
   }
 
   /* ---- drawing ---------------------------------------------------------- */
@@ -93,11 +94,11 @@
     const y = (v) => pad + (H - 2 * pad) * (1 - (v - lo) / (hi - lo || 1));
     const path = (arr) => arr.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join(" ");
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${T.esc(t("pfChartLabel"))}" style="width:100%;height:150px">
-      <line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="#C9C6BB" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
-      <path d="${path(is)}" fill="none" stroke="#8A919C" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      <line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="var(--rule)" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+      <path d="${path(is)}" fill="none" stroke="var(--gray)" stroke-width="2" vector-effect="non-scaling-stroke"/>
       <path d="${path(vs)}" fill="none" stroke="var(--accent)" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
     </svg>
-    <div class="calc-legend"><span><i style="background:var(--accent)"></i>${t("pfYou")}</span><span><i style="background:#8A919C"></i>IHSG</span><span>${T.date(snaps[0].d)} → ${T.date(snaps[snaps.length - 1].d)}</span></div>`;
+    <div class="calc-legend"><span><i style="background:var(--accent)"></i>${t("pfYou")}</span><span><i style="background:var(--gray)"></i>IHSG</span><span>${T.date(snaps[0].d)} → ${T.date(snaps[snaps.length - 1].d)}</span></div>`;
   }
 
   /* the part of the trade ticket that changes while typing */

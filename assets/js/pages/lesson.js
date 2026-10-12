@@ -27,7 +27,8 @@
           <p class="lead" style="font-size:19px">${L(l.desc)}</p>
         </header>
 
-        <div class="stack" style="gap:18px">${L(l.body)}</div>
+        <div class="stack lesson-body" style="gap:18px">${L(l.body)}</div>
+        <p class="gl-hint">${T.icon("book", 16)}<span>${t("glHint")}</span></p>
 
         <section class="card stack" style="gap:14px;margin-top:8px" aria-labelledby="quiz-title">
           <span class="eyebrow" id="quiz-title">${t("quizTitle")}</span>
@@ -52,9 +53,14 @@
         </nav>
       </article>`;
 
+    T.linkGlossary(document.querySelector(".lesson-body"));
     document.querySelectorAll(".quiz__opt").forEach((b) => b.addEventListener("click", () => {
+      const firstTry = picked === null;
       picked = Number(b.dataset.k);
-      if (picked === q.answer) T.setLessonDone(l.slug, true);
+      if (picked === q.answer) {
+        if (firstTry) T.track("quizFirst:" + l.slug);
+        T.setLessonDone(l.slug, true);
+      }
       render();
     }));
     document.getElementById("done-btn").addEventListener("click", () => {

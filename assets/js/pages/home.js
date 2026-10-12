@@ -88,7 +88,7 @@
       <span class="eyebrow" style="color:#AEB8C8">${t("termEyebrow")}</span>
       <h3 style="font-size:28px;font-weight:800">${L(term.term)}</h3>
       <p style="color:#E2E6EC">${L(term.def)}</p>
-      ${term.ex ? `<div style="background:#222E40;border-radius:14px;padding:14px 16px;font-size:14px;color:#E2E6EC">${t("example")}: ${L(term.ex)}</div>` : ""}
+      ${term.ex ? `<div style="background:var(--panel-2);border-radius:14px;padding:14px 16px;font-size:14px;color:#E2E6EC">${t("example")}: ${L(term.ex)}</div>` : ""}
       <a class="link-arrow" style="color:#fff;align-self:flex-start;padding:6px 0" href="kamus.html#${term.id}">${t("openGlossary")}</a>`;
   }
 
@@ -101,7 +101,7 @@
         <strong style="font-size:18px;line-height:1.3">${L(p.title)}</strong>
         <span style="font-size:15px;color:var(--muted);flex:1">${L(p.desc)}</span>
         <span style="display:flex;justify-content:space-between;padding-top:10px;border-top:1px solid var(--tint);font-size:14px;font-weight:700">
-          <span style="color:#3B4452">${t("nStocks", { n })}</span><span style="color:var(--accent)">→</span>
+          <span style="color:var(--text-2)">${t("nStocks", { n })}</span><span style="color:var(--accent)">→</span>
         </span>
       </a>`;
     }).join("");

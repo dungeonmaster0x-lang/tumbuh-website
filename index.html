@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>try{var m=localStorage.getItem("tumbuh-theme");if(m==="dark"||(!m&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.dataset.theme="dark"}catch(e){}</script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -55,11 +56,14 @@
         </div>
         <div style="display:flex;align-items:center;gap:12px;min-width:220px">
           <div class="progress" style="flex:1"><span id="path-bar"></span></div>
-          <span style="font-size:14px;font-weight:700;color:#3B4452" id="path-text"></span>
+          <span style="font-size:14px;font-weight:700;color:var(--text-2)" id="path-text"></span>
         </div>
       </div>
       <div class="grid-auto" id="path"></div>
-      <a class="link-arrow" href="belajar.html" id="all-lessons" style="align-self:flex-start;padding:4px 0"></a>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 24px">
+        <a class="link-arrow" href="belajar.html" id="all-lessons" style="padding:4px 0"></a>
+        <a class="link-arrow" href="prestasi.html" style="padding:4px 0" data-i18n="achTitle"></a>
+      </div>
     </section>
 
     <!-- MARKET MAP: every LQ45 stock as a tile -->

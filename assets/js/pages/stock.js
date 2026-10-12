@@ -5,6 +5,7 @@
   const code = (params.get("kode") || "BBCA").toUpperCase();
   const RANGES = { "1M": 22, "6M": 126, "1Y": 250, "5Y": 1250 };
   let range = "1Y";
+  let chartType = "line";               /* "line" or "candle" */
   let openHelp = null;
 
   /* Risks worth knowing, by sector */
@@ -83,14 +84,73 @@
   }
 
   function renderChart(s) {
+    if (range === "5Y" && chartType === "candle") chartType = "line";   /* candles only up to 1 year */
     const h = T.history(code, RANGES[range]);
     const first = h.points[0], last = h.points[h.points.length - 1];
     const ch = ((last - first) / first) * 100;
     const sentence = t("rangeOver", { range: t("w" + range), dir: t(ch >= 0 ? "rose" : "fell"), pct: T.pct(Math.abs(ch), 1, false), from: T.idr(first), to: T.idr(last) });
-    document.getElementById("chart-sentence").innerHTML = `${T.pill(ch)} <span>${sentence}</span>${h.sample ? ` <span class="tag">${t("sampleChart")}</span>` : ""}`;
+    const el = document.getElementById("price-chart");
+    let sample = h.sample;
+    if (chartType === "candle") {
+      const o = T.ohlc(code, RANGES[range]);
+      sample = o.sample;
+      T.drawCandles(el, o.bars, { label: sentence });
+    } else {
+      T.drawChart(el, h.points, { dates: h.dates, showLabels: true, label: sentence });
+    }
+    document.getElementById("chart-sentence").innerHTML = `${T.pill(ch)} <span>${sentence}</span>${sample ? ` <span class="tag">${t("sampleChart")}</span>` : ""}`;
     document.getElementById("chart-start").textContent = t("ago" + range);
-    T.drawChart(document.getElementById("price-chart"), h.points, { dates: h.dates, showLabels: true, label: sentence });
+    document.getElementById("chart-tip").innerHTML = chartType === "candle"
+      ? `${t("candleTip")} <a href="pelajaran.html?id=grafik-candlestick">${t("candleLearn")}</a>`
+      : t("chartTip");
     document.querySelectorAll("#ranges button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.r === range)));
+    document.querySelectorAll("#ctype button").forEach((b) => {
+      b.setAttribute("aria-pressed", String(b.dataset.t === chartType));
+      if (b.dataset.t === "candle") { b.disabled = range === "5Y"; b.title = range === "5Y" ? t("candleMax") : ""; }
+    });
+  }
+
+  /* Dividend history: totals per year + the latest payments */
+  function dividendSection(s) {
+    const m = T.market.stocks[code];
+    const head = `<h2 style="font-size:22px;font-weight:800">${t("divTitle")}</h2>`;
+    if (T.market.isSample || !m.dividends) {
+      return `<section class="card stack" style="gap:10px">${head}<p style="color:var(--muted)">${t("divNoDataYet")}</p></section>`;
+    }
+    const list = m.dividends;
+    if (!list.length) {
+      return `<section class="card stack" style="gap:10px">${head}<p style="color:var(--ink-2)">${t("divNone", { code })}</p>
+        <a class="link-arrow" href="pelajaran.html?id=dividen-aksi-korporasi">${t("divLearn")}</a></section>`;
+    }
+    const byYear = {};
+    list.forEach(([d, v]) => { const y = d.slice(0, 4); byYear[y] = (byYear[y] || 0) + v; });
+    const lastYear = Number(list[list.length - 1][0].slice(0, 4));
+    const years = [];
+    for (let y = lastYear - 7; y <= lastYear; y++) years.push([String(y), byYear[y] || 0]);
+    const max = Math.max(...years.map((y) => y[1]), 1);
+    const cutoff = new Date(new Date(T.market.updated).getTime() - 365 * 864e5).toISOString().slice(0, 10);
+    const ttm = list.filter(([d]) => d > cutoff).reduce((a, [, v]) => a + v, 0);
+    const last = list[list.length - 1];
+    const bars = years.map(([y, v]) => `
+      <div class="div-bar" title="${y}: ${T.idr(v)}">
+        <span class="div-bar__val num">${v ? T.num(v, v < 10 ? 1 : 0) : "—"}</span>
+        <span class="div-bar__col" style="height:${Math.max(v ? 4 : 0, (v / max) * 100)}%"></span>
+        <span class="div-bar__year">${y}</span>
+      </div>`).join("");
+    return `
+      <section class="card stack" style="gap:14px">
+        ${head}
+        <p style="color:var(--ink-2)">${ttm > 0
+          ? t("divTTM", { code, amt: T.idr(ttm), pct: T.pct((ttm / s.price) * 100, 1, false) })
+          : t("divNoTTM", { code })} ${t("divLast", { amt: T.idr(last[1]), date: T.date(last[0]) })}</p>
+        <div class="div-chart" role="img" aria-label="${T.esc(t("divChartLabel", { code }))}">${bars}</div>
+        <p class="div-caption">${t("divCaption")}</p>
+        <details class="div-list">
+          <summary>${t("divAll", { n: list.length })}</summary>
+          <div class="div-rows">${list.slice().reverse().map(([d, v]) => `<div><span>${T.date(d)}</span><strong class="num">${T.idr(v)}</strong></div>`).join("")}</div>
+        </details>
+        <a class="link-arrow" href="pelajaran.html?id=dividen-aksi-korporasi" style="align-self:flex-start">${t("divLearn")}</a>
+      </section>`;
   }
 
   function render() {
@@ -150,15 +210,21 @@
         <section class="card stack" style="gap:16px">
           <div class="section-head" style="align-items:center">
             <h2 style="font-size:22px;font-weight:800">${t("chartTitle")}</h2>
-            <div class="segmented" id="ranges" role="group" aria-label="${t("chartTitle")}">
-              ${Object.keys(RANGES).map((r) => `<button type="button" data-r="${r}" aria-pressed="false">${t("r" + r)}</button>`).join("")}
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <div class="segmented" id="ctype" role="group" aria-label="${t("chartType")}">
+                <button type="button" data-t="line" aria-pressed="true">${t("chartLine")}</button>
+                <button type="button" data-t="candle" aria-pressed="false">${t("chartCandle")}</button>
+              </div>
+              <div class="segmented" id="ranges" role="group" aria-label="${t("chartTitle")}">
+                ${Object.keys(RANGES).map((r) => `<button type="button" data-r="${r}" aria-pressed="false">${t("r" + r)}</button>`).join("")}
+              </div>
             </div>
           </div>
           <div id="chart-sentence" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:15px;color:var(--ink-2)"></div>
           <div class="chart" id="price-chart"></div>
           <div class="chart__axis"><span id="chart-start"></span><span>${t("now")}</span></div>
           <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid var(--tint);font-size:14px">
-            <span style="color:var(--muted)">${t("chartTip")}</span>
+            <span style="color:var(--muted)" id="chart-tip"></span>
           </div>
         </section>
 
@@ -205,13 +271,15 @@
             <a class="fact" href="pelajaran.html?id=indeks-ihsg-lq45" style="text-decoration:none;color:inherit"><span>${t("lq45Member")}</span><span>${L(T.lq45Period)}</span></a>
           </div>
         </section>
+
+        ${dividendSection(s)}
       </div>
 
       <aside class="split__side">
         <section class="card card--dark stack checklist" style="gap:12px">
           <h2 style="font-size:19px;font-weight:800">${t("checkTitle")}</h2>
           ${[1, 2, 3, 4].map((n) => `<label><input type="checkbox"><span>${t("check" + n)}</span></label>`).join("")}
-          <p style="margin-top:4px;padding-top:14px;border-top:1px solid #2E3A4D;font-size:13px;color:#AEB8C8">${t("checkNote")}</p>
+          <p style="margin-top:4px;padding-top:14px;border-top:1px solid var(--panel-line);font-size:13px;color:#AEB8C8">${t("checkNote")}</p>
         </section>
 
         <section class="card stack" style="gap:12px">
@@ -223,7 +291,7 @@
         <a class="card card--soft card--link" href="pelajaran.html?id=${lesson.slug}" style="gap:8px">
           <span class="eyebrow">${t("relatedLesson")}</span>
           <strong style="font-size:18px;line-height:1.3">${L(lesson.title)}</strong>
-          <span class="link-arrow" style="font-size:14px;color:#3B4452">${t("minutes", { n: lesson.mins })}</span>
+          <span class="link-arrow" style="font-size:14px;color:var(--text-2)">${t("minutes", { n: lesson.mins })}</span>
         </a>
 
         ${similar.length ? `
@@ -246,6 +314,12 @@
     </div>`;
 
     renderChart(s);
+    document.getElementById("ctype").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-t]");
+      if (!b || b.disabled) return;
+      chartType = b.dataset.t;
+      renderChart(s);
+    });
     document.getElementById("ranges").addEventListener("click", (e) => {
       const b = e.target.closest("[data-r]");
       if (!b) return;

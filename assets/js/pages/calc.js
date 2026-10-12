@@ -100,7 +100,7 @@
     const up = r.value >= r.invested;
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${T.esc(t("calcDcaChart"))}" style="width:100%;height:220px">
       <path d="${path(r.valueLine)} L${W},${H} L0,${H} Z" fill="${up ? "var(--up-line)" : "var(--down-line)"}" fill-opacity="0.08"/>
-      <path d="${path(r.investedLine)}" fill="none" stroke="#8A919C" stroke-width="2" stroke-dasharray="5 5" vector-effect="non-scaling-stroke"/>
+      <path d="${path(r.investedLine)}" fill="none" stroke="var(--gray)" stroke-width="2" stroke-dasharray="5 5" vector-effect="non-scaling-stroke"/>
       <path d="${path(r.valueLine)}" fill="none" stroke="${up ? "var(--up-line)" : "var(--down-line)"}" stroke-width="2.4" vector-effect="non-scaling-stroke"/>
     </svg>
     <div class="chart__axis"><span>${r.start ? T.date(r.start) : t("ago" + (st.dca.years === 1 ? "1Y" : "5Y"))}</span><span>${t("now")}</span></div>
@@ -206,6 +206,7 @@
       calcDCA();
     });
     calcLot(); calcPL(); calcDCA();
+    if (!render.tracked) { render.tracked = true; T.track("dca"); }
     if (location.hash) { const el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }
   }
 

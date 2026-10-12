@@ -16,9 +16,12 @@
         <p class="lead" style="font-size:18px">${t("learnSub")}</p>
         <div style="display:flex;align-items:center;gap:14px;max-width:420px">
           <div class="progress" style="flex:1"><span style="width:${(n / total) * 100}%"></span></div>
-          <span style="font-size:14px;font-weight:700;color:#3B4452">${t("progress", { n, total })}</span>
+          <span style="font-size:14px;font-weight:700;color:var(--text-2)">${t("progress", { n, total })}</span>
         </div>
-        ${next ? `<a class="btn btn--primary btn--lg" style="align-self:flex-start" href="pelajaran.html?id=${next.slug}">${t("ctaStart")}: ${L(next.title)} ${T.icon("arrow", 18)}</a>` : ""}
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          ${next ? `<a class="btn btn--primary btn--lg" href="pelajaran.html?id=${next.slug}">${t("ctaStart")}: ${L(next.title)} ${T.icon("arrow", 18)}</a>` : ""}
+          <a class="btn btn--ghost btn--lg" href="prestasi.html">${T.icon("trophy", 18)}${t("achTitle")}</a>
+        </div>
       </section>
 
       ${T.modules.map((m) => {
@@ -32,7 +35,7 @@
             <h2 id="mod-${m.key}" style="font-size:24px;font-weight:800">${L(m.title)}</h2>
             <p style="color:var(--muted)">${L(m.desc)}</p>
           </div>
-          <span class="mins" style="background:${mDone === items.length ? "var(--up-bg)" : "#F3F2EC"};color:${mDone === items.length ? "var(--up)" : "var(--muted-2)"}">${t("moduleProgress", { n: mDone, total: items.length, mins })}</span>
+          <span class="mins" style="background:${mDone === items.length ? "var(--up-bg)" : "var(--tint-2)"};color:${mDone === items.length ? "var(--up)" : "var(--muted-2)"}">${t("moduleProgress", { n: mDone, total: items.length, mins })}</span>
         </div>
         <ol class="stack" style="list-style:none;margin:0;padding:0;gap:12px">
           ${items.map((l) => {
