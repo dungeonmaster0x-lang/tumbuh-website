@@ -16,6 +16,8 @@ What it fills in for each stock:
     price, prevClose        last close and the close before it
     high52, low52           highest / lowest close over the last 12 months
     history                 daily closes for up to 5 years (for the charts)
+    ohlc                    open/high/low/close for the last ~260 days (candlesticks)
+    dividends               cash dividends per share by ex-date, last ~10 years
     volumeM                 shares traded on the last day (millions)
     marketCapT, pe, pbv,    from Yahoo Finance when available; left empty
     divYield, roe           (shown as "—" on the site) when not
@@ -87,6 +89,28 @@ def closes(symbol: str, period: str = "5y"):
 
 def history_points(data) -> list[list]:
     return [[idx.strftime("%Y-%m-%d"), round(float(row.Close), 2)] for idx, row in data.iterrows()]
+
+
+def ohlc_points(data, days: int = 260) -> list[list]:
+    """Open, high, low, close for the most recent trading days (for candlestick charts).
+    Lines up with the last `days` entries of `history`."""
+    tail = data.tail(days)
+    return [[round(float(r.Open), 2), round(float(r.High), 2), round(float(r.Low), 2), round(float(r.Close), 2)]
+            for _, r in tail.iterrows()]
+
+
+def dividends(symbol: str, years: int = 10) -> list[list]:
+    """Cash dividends per share, by ex-date, for roughly the last `years` years."""
+    try:
+        d = yf.Ticker(symbol).dividends
+    except Exception as err:
+        print(f"   (no dividend history for {symbol}: {err})")
+        return []
+    if d is None or len(d) == 0:
+        return []
+    cutoff = d.index[-1] - dt.timedelta(days=365 * years)
+    d = d[d.index >= cutoff]
+    return [[idx.strftime("%Y-%m-%d"), round(float(v), 2)] for idx, v in d.items() if float(v) > 0]
 
 
 def year_slice(data):
@@ -166,6 +190,8 @@ def main() -> None:
         })
         entry.update(fundamentals(symbol))
         entry["history"] = history_points(data)
+        entry["ohlc"] = ohlc_points(data)
+        entry["dividends"] = dividends(symbol)
         stocks[code] = entry
         last_date = max(last_date or data.index[-1], data.index[-1])
         print(f"{entry['price']:,.0f}")
