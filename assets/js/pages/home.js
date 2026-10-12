@@ -107,6 +107,26 @@
     }).join("");
   }
 
+  /* market map */
+  let hmPeriod = "1D";
+  const HM_RANGE = { "1D": 3, "1M": 10, "1Y": 30 };
+  function renderHeatmap() {
+    const el = document.getElementById("heatmap");
+    T.drawHeatmap(el, hmPeriod);
+    document.getElementById("hm-lo").textContent = T.pct(-HM_RANGE[hmPeriod], 0);
+    document.getElementById("hm-hi").textContent = T.pct(HM_RANGE[hmPeriod], 0);
+    document.querySelectorAll("#hm-period button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.p === hmPeriod)));
+  }
+  document.getElementById("hm-period").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-p]");
+    if (b) { hmPeriod = b.dataset.p; renderHeatmap(); }
+  });
+  let lastW = 0;
+  if (window.ResizeObserver) new ResizeObserver((entries) => {
+    const w = Math.round(entries[0].contentRect.width);
+    if (w !== lastW) { lastW = w; renderHeatmap(); }
+  }).observe(document.getElementById("heatmap"));
+
   document.getElementById("mover-tabs").addEventListener("click", (e) => {
     const b = e.target.closest("[data-tab]");
     if (!b) return;
@@ -116,6 +136,6 @@
 
   T.boot("home", () => {
     document.getElementById("hero-arrow").innerHTML = T.icon("arrow", 18);
-    renderIndex(); renderPath(); renderMovers(); renderSectors(); renderTerm(); renderPresets();
+    renderIndex(); renderPath(); renderHeatmap(); renderMovers(); renderSectors(); renderTerm(); renderPresets();
   });
 })();

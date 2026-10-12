@@ -27,6 +27,7 @@ tumbuh-website/
 ├── pantau.html         Watchlist: the stocks you starred (saved in your browser)
 ├── bandingkan.html     Compare two stocks — bandingkan.html?a=BBCA&b=BBRI
 ├── kalkulator.html     Calculators: lots, profit after fees, monthly investing (DCA)
+├── latihan.html        Practice portfolio: Rp100 juta pretend money, real closing prices
 ├── assets/
 │   ├── css/style.css   All styling. Colours and sizes are at the top (":root")
 │   ├── img/favicon.svg Logo / browser tab icon

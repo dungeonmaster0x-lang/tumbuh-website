@@ -222,6 +222,7 @@
           ${link("belajar.html", "navLearn", "learn")}
           ${link("kamus.html", "navGlossary", "glossary")}
           ${link("penyaring.html", "navScreener", "screener")}
+          ${link("latihan.html", "navPractice", "practice")}
           ${link("kalkulator.html", "navCalc", "calc")}
           <a href="pantau.html" ${active === "watch" ? 'aria-current="page"' : ""}><span data-i18n="navWatch"></span><span class="nav-count" id="watch-count" hidden></span></a>
         </nav>
@@ -255,6 +256,7 @@
           <a href="pantau.html" data-i18n="navWatch"></a>
           <a href="bandingkan.html" data-i18n="navCompare"></a>
           <a href="kalkulator.html" data-i18n="navCalc"></a>
+          <a href="latihan.html" data-i18n="navPractice"></a>
         </nav>
       </div>
     </footer>`;
@@ -316,5 +318,93 @@
     const run =() => { T.applyStatic(); banner(); if (render) render(); T.applyStatic(); };
     T.onLang(run);
     run();
+  };
+})();
+
+/* ==========================================================================
+   Market map (heatmap): one tile per stock, sized by company value and
+   coloured by price change. T.drawHeatmap(container, period)
+   period: "1D" (latest day), "1M" or "1Y"
+   ========================================================================== */
+(function () {
+  const T = window.TUMBUH;
+  const RANGE = { "1D": 3, "1M": 10, "1Y": 30 };        /* % that gets the strongest colour */
+  const DAYS = { "1M": 22, "1Y": 250 };
+
+  /* squarified treemap: lays out rectangles that stay close to squares */
+  function squarify(items, x, y, w, h) {
+    const out = [];
+    const total = items.reduce((a, i) => a + i.v, 0) || 1;
+    let rest = items.map((i) => Object.assign({}, i, { a: (i.v / total) * w * h }));
+    const worst = (row, side) => {
+      const s = row.reduce((a, r) => a + r.a, 0), mx = Math.max(...row.map((r) => r.a)), mn = Math.min(...row.map((r) => r.a));
+      return Math.max((side * side * mx) / (s * s), (s * s) / (side * side * mn));
+    };
+    while (rest.length) {
+      const side = Math.min(w, h);
+      let row = [rest[0]], i = 1;
+      while (i < rest.length && worst(row.concat(rest[i]), side) <= worst(row, side)) { row.push(rest[i]); i++; }
+      const s = row.reduce((a, r) => a + r.a, 0);
+      if (w >= h) {                                       /* lay the row down the left side */
+        const rw = s / h; let cy = y;
+        row.forEach((r) => { const rh = r.a / rw; out.push(Object.assign(r, { x, y: cy, w: rw, h: rh })); cy += rh; });
+        x += rw; w -= rw;
+      } else {                                            /* lay the row along the top */
+        const rh = s / w; let cx = x;
+        row.forEach((r) => { const rw = r.a / rh; out.push(Object.assign(r, { x: cx, y, w: rw, h: rh })); cx += rw; });
+        y += rh; h -= rh;
+      }
+      rest = rest.slice(i);
+    }
+    return out;
+  }
+
+  function mix(a, b, t) {
+    const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+    const A = p(a), B = p(b);
+    return "#" + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, "0")).join("");
+  }
+  function colourFor(change, period) {
+    const t = Math.min(Math.abs(change) / RANGE[period], 1);
+    return change >= 0 ? mix("#E6E4DC", "#0B6B47", t) : mix("#E6E4DC", "#B42318", t);
+  }
+  const darkText = (hex) => {
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.45;
+  };
+
+  T.heatmapChange = function (s, period) {
+    if (period === "1D") return s.change;
+    const h = T.history(s.code, DAYS[period]).points;
+    return ((h[h.length - 1] - h[0]) / h[0]) * 100;
+  };
+
+  T.drawHeatmap = function (el, period) {
+    const W = el.clientWidth, H = el.clientHeight;
+    if (!W || !H) return;
+    const stocks = T.allStocks().map((s) => Object.assign({}, s, { v: Math.max(s.marketCapT || 1, 1), chg: T.heatmapChange(s, period) }));
+    const bySector = {};
+    stocks.forEach((s) => (bySector[s.sector] = bySector[s.sector] || []).push(s));
+    const sectors = Object.entries(bySector).map(([k, list]) => ({ k, list: list.sort((a, b) => b.v - a.v), v: list.reduce((a, s) => a + s.v, 0) }))
+      .sort((a, b) => b.v - a.v);
+    const gap = 2;
+    let html = "";
+    squarify(sectors, 0, 0, W, H).forEach((sec) => {
+      const label = sec.w > 70 && sec.h > 60;
+      const top = label ? 18 : 0;
+      html += `<div class="hm-sector" style="left:${sec.x}px;top:${sec.y}px;width:${sec.w}px;height:${sec.h}px">${label ? `<span class="hm-sector__name">${T.esc(T.L(T.sectors[sec.k]))}</span>` : ""}</div>`;
+      squarify(sec.list, sec.x, sec.y + top, sec.w, sec.h - top).forEach((r) => {
+        const bg = colourFor(r.chg, period);
+        const fs = Math.max(10, Math.min(22, Math.min(r.w / 4, r.h / 2.6)));
+        const showCode = r.w > 34 && r.h > 20, showPct = r.w > 48 && r.h > 40;
+        const pct = T.pct(r.chg, period === "1D" ? 2 : 1);
+        html += `<a class="hm-tile" href="saham.html?kode=${r.code}"
+          style="left:${r.x + gap / 2}px;top:${r.y + gap / 2}px;width:${Math.max(r.w - gap, 0)}px;height:${Math.max(r.h - gap, 0)}px;background:${bg};color:${darkText(bg) ? "#16202E" : "#FFFFFF"}"
+          aria-label="${r.code}, ${T.esc(r.name)}, ${pct}" title="${r.code} · ${T.esc(r.name)} · ${pct}">
+          ${showCode ? `<strong style="font-size:${fs}px">${r.code}</strong>` : ""}${showPct ? `<span style="font-size:${Math.max(10, fs * 0.62)}px">${pct}</span>` : ""}
+        </a>`;
+      });
+    });
+    el.innerHTML = html;
   };
 })();

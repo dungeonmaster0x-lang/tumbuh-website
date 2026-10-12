@@ -237,6 +237,10 @@
             </a>`).join("")}
         </section>` : ""}
 
+        <a class="card card--link" href="latihan.html?kode=${s.code}" style="flex-direction:row;align-items:center;gap:14px;background:var(--turmeric-soft);border-color:transparent">
+          <span class="pf-coin" aria-hidden="true" style="width:52px;height:52px;margin:0;box-shadow:none"><span style="font-size:13px">Rp</span></span>
+          <span class="stack" style="gap:2px"><strong>${t("practiceCta")}</strong><span style="font-size:14px;color:var(--turmeric-ink)">${t("pfEyebrow")}</span></span>
+        </a>
         <div class="note-dashed">${T.icon("info", 20)}<span>${t("buyNote")}</span></div>
       </aside>
     </div>`;

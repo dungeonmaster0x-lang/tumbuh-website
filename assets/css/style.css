@@ -88,18 +88,18 @@ button { cursor: pointer; }
   font-size: 13px; font-weight: 600; text-align: center; padding: 8px 16px;
 }
 .site-header { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
-.site-header__inner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-top: 12px; padding-bottom: 12px; }
+.site-header__inner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding-top: 12px; padding-bottom: 12px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 21px; letter-spacing: -0.02em; }
 .brand:hover { color: var(--ink); }
 .nav { display: flex; flex-wrap: wrap; gap: 2px; }
 .nav a {
-  padding: 10px 12px; border-radius: var(--radius-s); text-decoration: none;
+  padding: 10px 10px; border-radius: var(--radius-s); text-decoration: none;
   font-size: 15px; font-weight: 600; color: #3B4452;
 }
 .nav a:hover { background: var(--tint); color: var(--ink); }
 .nav a[aria-current="page"] { color: var(--accent); font-weight: 700; background: var(--accent-soft); }
 .search {
-  position: relative; flex: 1 1 240px; display: flex; align-items: center; gap: 10px;
+  position: relative; flex: 1 1 180px; display: flex; align-items: center; gap: 10px;
   height: 44px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-2);
 }
 .search:focus-within { border-color: var(--accent); }
@@ -319,6 +319,56 @@ button { cursor: pointer; }
 .summary-strip .fact span:last-child { font-size: 24px; font-weight: 800; }
 @media (max-width: 560px) { .spark { display: none; } }
 
+/* market map */
+.heatmap { position: relative; width: 100%; height: 460px; border-radius: 14px; overflow: hidden; background: var(--surface); }
+.hm-sector { position: absolute; box-sizing: border-box; border: 1px solid var(--surface); }
+.hm-sector__name { position: absolute; left: 6px; top: 1px; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: calc(100% - 12px); }
+.hm-tile { position: absolute; box-sizing: border-box; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; line-height: 1.15; font-variant-numeric: tabular-nums; transition: filter .12s; }
+.hm-tile:hover { filter: brightness(1.08); outline: 2px solid var(--ink); outline-offset: -2px; z-index: 2; }
+.hm-tile strong { font-weight: 800; letter-spacing: -0.01em; }
+.hm-tile span { font-weight: 600; opacity: 0.92; }
+.hm-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 13px; font-weight: 700; color: var(--muted-2); }
+.hm-legend__bar { width: 160px; height: 10px; border-radius: 99px; background: linear-gradient(90deg, #B42318, #E6E4DC 50%, #0B6B47); }
+.hm-legend__note { font-weight: 500; margin-left: 8px; }
+@media (max-width: 560px) { .heatmap { height: 560px; } .hm-legend__note { margin-left: 0; flex-basis: 100%; } }
+
+/* practice portfolio */
+.pf-intro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; padding: 36px; }
+.pf-rules { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pf-rules li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-2); }
+.pf-rules svg { flex: none; margin-top: 3px; color: var(--up); }
+.pf-coin { flex: none; width: 200px; height: 200px; border-radius: 50%; background: var(--turmeric); color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 0 0 10px rgba(255,255,255,0.35), 0 18px 40px -18px rgba(22,32,46,0.45); margin: 0 auto; }
+.pf-coin span { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.pf-coin small { font-size: 18px; font-weight: 700; }
+.pf-fact { background: var(--surface); border: 1px solid var(--line); }
+.pf-fact small { font-size: 14px; font-weight: 700; }
+.pf-table { display: flex; flex-direction: column; }
+.pf-row { display: grid; grid-template-columns: minmax(130px, 1.3fr) minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr) auto; gap: 8px 14px; align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--tint); }
+.pf-row > span { display: flex; flex-direction: column; font-weight: 700; font-size: 15px; }
+.pf-row small { font-size: 12px; font-weight: 500; color: var(--muted-2); }
+.pf-row--head { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-2); padding-top: 0; }
+.pf-row--head > span { font-size: 12px; }
+.pf-stock { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); min-width: 0; }
+.pf-stock span span { font-size: 12px; color: var(--muted-2); }
+.pf-actions { flex-direction: row !important; gap: 6px; }
+.pf-mini { height: 36px; padding: 0 12px; font-size: 13px; }
+.pf-trade { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--tint); font-size: 14px; }
+.pf-trade small { grid-column: 2 / 4; color: var(--muted-2); font-size: 12px; }
+.pf-msg { margin: 0; padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 600; }
+.pf-msg--ok { background: var(--up-bg); color: var(--up); }
+.pf-msg--bad { background: var(--down-bg); color: var(--down); }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+.pf-ticket .calc-res { align-self: stretch; }
+.risk-item svg.ok { color: var(--up); }
+@media (max-width: 760px) {
+  .pf-intro { padding: 24px; }
+  .pf-coin { width: 150px; height: 150px; }
+  .pf-coin span { font-size: 34px; }
+  .pf-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pf-row--head { display: none; }
+  .pf-actions { grid-column: 1 / -1; }
+}
+
 /* calculator page */
 .calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; scroll-margin-top: 90px; }
 .calc h2 { font-size: 22px; font-weight: 800; }
@@ -396,7 +446,7 @@ button { cursor: pointer; }
 .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); }
 
 /* 8. SMALL SCREENS ------------------------------------------------------- */
-@media (max-width: 860px) {
+@media (max-width: 1199px) {   /* below this the full menu no longer fits on one line */
   .site-header { position: static; }
   .menu-btn {
     display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
